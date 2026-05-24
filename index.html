@@ -19,7 +19,7 @@
   --blue:#0277BD;--blue-mid:#29B6F6;--blue-lt:#E1F5FE;
   --green:#2E7D32;--green-mid:#66BB6A;--green-lt:#E8F5E9;
   --coral:#BF360C;--coral-lt:#FBE9E7;
-  --pink:#AD1457;--pink-lt:#FCE4EC;
+  --indigo:#283593;--indigo-lt:#E8EAF6;
   --gray:#546E7A;--gray-lt:#ECEFF1;--gray-mid:#90A4AE;
   --bg:#FFF0F5;--surface:#FFFFFF;
   --text:#1A1A2E;--text-2:#455A64;--text-3:#90A4AE;
@@ -31,26 +31,20 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow:hidden;background:var(--bg);font-family:var(--font);color:var(--text)}
 #app{display:flex;flex-direction:column;height:100%;height:100dvh}
-
-/* Header — vivid gradient */
-.header{background:linear-gradient(135deg,#C2185B 0%,#8E24AA 60%,#5C6BC0 100%);padding:calc(var(--safe-top) + 14px) 20px 18px;flex-shrink:0}
+.header{background:linear-gradient(135deg,#C2185B 0%,#8E24AA 60%,#5C6BC0 100%);padding:calc(var(--safe-top)+14px) 20px 18px;flex-shrink:0}
 .header-top{display:flex;justify-content:space-between;align-items:flex-start}
 .header-title{font-family:var(--font);font-size:26px;font-weight:600;color:#fff;line-height:1.1;letter-spacing:-.3px}
-.header-sub{font-size:12px;color:rgba(255,255,255,0.7);margin-top:3px;font-weight:400}
+.header-sub{font-size:12px;color:rgba(255,255,255,0.7);margin-top:3px}
 .header-date{font-size:12px;color:rgba(255,255,255,0.65);text-align:right;line-height:1.6}
 .header-phase{display:inline-block;background:rgba(255,255,255,0.18);backdrop-filter:blur(4px);color:#fff;font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;margin-top:10px;border:0.5px solid rgba(255,255,255,0.25)}
-
-/* Nav */
 .nav{background:var(--surface);display:flex;border-bottom:0.5px solid var(--border);flex-shrink:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
-.ntab{flex:1;min-width:58px;padding:11px 6px 9px;border:none;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text-3);font-size:10px;font-weight:500;font-family:var(--font);transition:color .15s;position:relative}
+.ntab{flex:1;min-width:52px;padding:10px 4px 8px;border:none;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text-3);font-size:9px;font-weight:500;font-family:var(--font);transition:color .15s;position:relative}
 .ntab.on{color:var(--rose)}
 .ntab.on::after{content:'';position:absolute;bottom:0;left:15%;right:15%;height:2.5px;background:linear-gradient(90deg,var(--rose),var(--purple-mid));border-radius:2px 2px 0 0}
-.ntab-icon{font-size:18px}
-.content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px 16px calc(var(--safe-bot) + 80px)}
+.ntab-icon{font-size:17px}
+.content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px 16px calc(var(--safe-bot)+80px)}
 .view{display:none}.view.on{display:block}
-
-/* Cards — coloured left accents per section */
 .card{background:var(--surface);border-radius:var(--radius);border:0.5px solid var(--border);padding:14px 16px;margin-bottom:12px;box-shadow:0 1px 6px rgba(0,0,0,0.04)}
 .card-rose{border-left:3.5px solid var(--rose-mid)}
 .card-teal{border-left:3.5px solid var(--teal-mid)}
@@ -58,64 +52,45 @@ html,body{height:100%;overflow:hidden;background:var(--bg);font-family:var(--fon
 .card-amber{border-left:3.5px solid var(--amber-mid)}
 .card-blue{border-left:3.5px solid var(--blue-mid)}
 .card-green{border-left:3.5px solid var(--green-mid)}
-
+.card-indigo{border-left:3.5px solid #5C6BC0}
+.card-coral{border-left:3.5px solid #BF360C}
 .sec{font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--text-3);text-transform:uppercase;margin:18px 0 8px;padding-left:2px}
 .sec:first-child{margin-top:0}
-
-/* Stats */
 .stat-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:12px}
-.stat{border-radius:var(--radius);padding:14px;position:relative;overflow:hidden}
-.stat-rose{background:var(--rose-lt)}
-.stat-teal{background:var(--teal-lt)}
-.stat-purple{background:var(--purple-lt)}
-.stat-blue{background:var(--blue-lt)}
-.stat-green{background:var(--green-lt)}
-.stat-amber{background:var(--amber-lt)}
+.stat{border-radius:var(--radius);padding:14px}
+.stat-rose{background:var(--rose-lt)}.stat-teal{background:var(--teal-lt)}.stat-purple{background:var(--purple-lt)}.stat-blue{background:var(--blue-lt)}.stat-green{background:var(--green-lt)}.stat-amber{background:var(--amber-lt)}.stat-indigo{background:var(--indigo-lt)}
 .stat-label{font-size:10px;color:var(--text-3);font-weight:600;letter-spacing:.04em;margin-bottom:4px}
 .stat-val{font-size:24px;font-weight:600;color:var(--text);line-height:1}
 .stat-sub{font-size:10px;color:var(--text-3);margin-top:3px}
-
 .log-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:0.5px solid var(--border)}
 .log-row:last-child{border-bottom:none;padding-bottom:0}
 .log-row:first-child{padding-top:0}
 .log-label{font-size:14px;color:var(--text);font-weight:500}
 .log-sub{font-size:11px;color:var(--text-3);margin-top:1px}
-
-/* Checkboxes */
 .chk{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border-md);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;background:transparent;flex-shrink:0}
 .chk.done{background:linear-gradient(135deg,var(--rose),var(--purple-mid));border-color:transparent}
 .chk.done::after{content:'';display:block;width:5px;height:9px;border:2px solid #fff;border-top:none;border-left:none;transform:rotate(45deg) translate(-1px,-1px)}
-
 select{font-size:13px;padding:8px 10px;border-radius:var(--radius-sm);border:0.5px solid var(--border-md);background:var(--bg);color:var(--text);font-family:var(--font);width:100%;margin-bottom:10px;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2390A4AE' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:30px}
-
 .slider-wrap{margin:8px 0}
 .slider-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
 .slider-head label{font-size:12px;color:var(--text-2);font-family:var(--font)}
 .slider-head span{font-size:13px;font-weight:600;color:var(--text)}
 input[type=range]{width:100%;height:4px;-webkit-appearance:none;appearance:none;background:var(--gray-lt);border-radius:4px;outline:none;cursor:pointer}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--purple-mid));cursor:pointer;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(194,24,91,0.3)}
-
-/* Water */
 .water-grid{display:flex;gap:6px;flex-wrap:wrap}
 .glass{width:28px;height:28px;border-radius:8px;border:1.5px solid var(--border-md);cursor:pointer;transition:all .2s;background:transparent}
 .glass.full{background:linear-gradient(180deg,#29B6F6,#0277BD);border-color:#0277BD}
-
-/* Mood */
 .mood-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:4px}
 .mood-btn{padding:7px 14px;border-radius:20px;border:0.5px solid var(--border-md);cursor:pointer;font-size:13px;background:transparent;color:var(--text-2);font-family:var(--font);transition:all .2s}
 .mood-btn.sel{background:linear-gradient(135deg,var(--green-lt),var(--teal-lt));color:var(--teal);border-color:var(--teal-mid);font-weight:500}
-
 textarea{width:100%;border:0.5px solid var(--border-md);border-radius:var(--radius-sm);padding:10px 12px;font-size:13px;color:var(--text);background:var(--bg);resize:none;font-family:var(--font);line-height:1.5;margin-top:8px}
 textarea:focus{outline:none;border-color:var(--rose)}
 textarea::placeholder{color:var(--text-3)}
-
 .prog-wrap{height:6px;background:var(--gray-lt);border-radius:4px;overflow:hidden;margin-top:6px}
 .prog-fill{height:100%;border-radius:4px;transition:width .4s}
-
-.save-btn{width:100%;padding:15px;background:linear-gradient(135deg,#C2185B,#8E24AA);color:#fff;border:none;border-radius:var(--radius);font-size:15px;font-weight:600;font-family:var(--font);cursor:pointer;margin-top:8px;transition:opacity .15s;letter-spacing:.02em;box-shadow:0 4px 14px rgba(194,24,91,0.3)}
+.save-btn{width:100%;padding:15px;background:linear-gradient(135deg,#C2185B,#8E24AA);color:#fff;border:none;border-radius:var(--radius);font-size:15px;font-weight:600;font-family:var(--font);cursor:pointer;margin-top:8px;transition:opacity .15s;box-shadow:0 4px 14px rgba(194,24,91,0.3)}
 .save-btn:active{opacity:.85}
 .save-msg{text-align:center;font-size:12px;color:var(--rose);margin-top:6px;height:16px;font-weight:500}
-
 .week-nav{display:flex;align-items:center;gap:8px;margin-bottom:12px}
 .week-nav button{width:34px;height:34px;border-radius:50%;border:none;background:var(--rose-lt);cursor:pointer;font-size:16px;color:var(--rose);display:flex;align-items:center;justify-content:center}
 .week-nav span{flex:1;text-align:center;font-size:13px;font-weight:600;color:var(--text)}
@@ -133,7 +108,7 @@ textarea::placeholder{color:var(--text-3)}
 .hist-date{font-size:11px;color:var(--text-3);margin-bottom:4px}
 .hist-main{display:flex;justify-content:space-between;align-items:center}
 .hist-workout{font-size:13px;font-weight:500;color:var(--text)}
-.hist-stats{display:flex;gap:8px}
+.hist-stats{display:flex;gap:8px;flex-wrap:wrap}
 .hist-stat{font-size:11px;color:var(--text-2)}
 .pill{font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;display:inline-block}
 .bars-row{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;align-items:flex-end;height:80px}
@@ -141,7 +116,7 @@ textarea::placeholder{color:var(--text-3)}
 .bar-bg{flex:1;width:100%;background:var(--gray-lt);border-radius:4px;display:flex;align-items:flex-end;overflow:hidden}
 .bar-fill{width:100%;border-radius:4px;transition:height .4s}
 .bar-lbl{font-size:9px;color:var(--text-3);margin-top:3px}
-.trend-row{display:grid;grid-template-columns:1fr 40px 40px 40px 36px;gap:6px;align-items:center;padding:8px 0;border-bottom:0.5px solid var(--border);font-size:12px}
+.trend-row{display:grid;grid-template-columns:1fr 36px 36px 36px 30px;gap:4px;align-items:center;padding:8px 0;border-bottom:0.5px solid var(--border);font-size:12px}
 .trend-row:last-child{border-bottom:none}
 .trend-hdr{font-size:10px;color:var(--text-3);font-weight:600}
 .trend-val{text-align:center;font-weight:600;color:var(--text)}
@@ -194,11 +169,7 @@ textarea::placeholder{color:var(--text-3)}
 .bs-label{font-size:10px;color:var(--text-3);min-width:26px}
 .bs-dots{display:flex;gap:4px;flex:1}
 .bs-dot{flex:1;height:10px;border-radius:5px;cursor:pointer;transition:all .15s;border:1.5px solid var(--border-md);background:transparent}
-.bs-dot.sel-1{background:#26A69A;border-color:#26A69A}
-.bs-dot.sel-2{background:#66BB6A;border-color:#66BB6A}
-.bs-dot.sel-3{background:#FDD835;border-color:#FDD835}
-.bs-dot.sel-4{background:#FF8F00;border-color:#FF8F00}
-.bs-dot.sel-5{background:#E53935;border-color:#E53935}
+.bs-dot.sel-1{background:#26A69A;border-color:#26A69A}.bs-dot.sel-2{background:#66BB6A;border-color:#66BB6A}.bs-dot.sel-3{background:#FDD835;border-color:#FDD835}.bs-dot.sel-4{background:#FF8F00;border-color:#FF8F00}.bs-dot.sel-5{background:#E53935;border-color:#E53935}
 .bs-legend{display:flex;justify-content:space-between;font-size:9px;color:var(--text-3);margin-top:4px}
 .bs-feeling-row{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
 .bs-feel-btn{padding:5px 10px;border-radius:14px;border:0.5px solid var(--border-md);cursor:pointer;font-size:11px;background:transparent;color:var(--text-2);font-family:var(--font);transition:all .15s}
@@ -207,6 +178,36 @@ textarea::placeholder{color:var(--text-3)}
 .journal-prompt{font-size:12px;color:var(--text-3);font-style:italic;margin-bottom:8px;line-height:1.7;padding:8px 12px;background:var(--purple-lt);border-radius:var(--radius-sm);border-left:3px solid var(--purple-mid)}
 .journal-section-title{font-size:12px;font-weight:600;color:var(--text-2);margin-bottom:4px;margin-top:14px}
 .journal-section-title:first-child{margin-top:0}
+/* Weekly feedback */
+.feedback-card{border-radius:var(--radius);padding:16px;margin-bottom:12px;position:relative;overflow:hidden}
+.feedback-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--radius) var(--radius) 0 0}
+.fb-week-label{font-size:10px;font-weight:600;letter-spacing:.06em;color:var(--text-3);text-transform:uppercase;margin-bottom:6px}
+.fb-goal{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px;line-height:1.4}
+.fb-improvements{margin-bottom:10px}
+.fb-item{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:0.5px solid rgba(0,0,0,0.06)}
+.fb-item:last-child{border-bottom:none}
+.fb-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.fb-text{font-size:12px;color:var(--text-2);line-height:1.5}
+.fb-result-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.fb-result{font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px}
+/* Weight tracker */
+.weight-input-row{display:flex;gap:10px;align-items:center;margin-bottom:14px}
+.weight-input{flex:1;padding:10px 14px;border-radius:var(--radius-sm);border:0.5px solid var(--border-md);background:var(--bg);font-size:18px;font-weight:600;font-family:var(--font);color:var(--text);text-align:center}
+.weight-input:focus{outline:none;border-color:var(--rose)}
+.wt-log-btn{padding:10px 18px;background:linear-gradient(135deg,#C2185B,#8E24AA);color:#fff;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:600;font-family:var(--font);cursor:pointer}
+.weight-chart{height:100px;position:relative;margin:10px 0}
+.wt-entry{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:0.5px solid var(--border)}
+.wt-entry:last-child{border-bottom:none}
+.wt-date{font-size:11px;color:var(--text-3)}
+.wt-val{font-size:14px;font-weight:600;color:var(--text)}
+.wt-delta{font-size:11px;font-weight:600;padding:2px 7px;border-radius:10px}
+.wt-down{background:var(--green-lt);color:var(--green)}
+.wt-up{background:var(--rose-lt);color:var(--rose)}
+.wt-same{background:var(--gray-lt);color:var(--gray)}
+.results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
+.result-item{background:var(--bg);border-radius:var(--radius-sm);padding:10px 12px;border:0.5px solid var(--border)}
+.result-week{font-size:9px;font-weight:600;color:var(--text-3);letter-spacing:.05em;margin-bottom:3px}
+.result-text{font-size:12px;color:var(--text-2);line-height:1.4}
 </style>
 </head>
 <body>
@@ -221,23 +222,22 @@ textarea::placeholder{color:var(--text-3)}
   </div>
   <div class="header-phase" id="hdr-phase">Phase 1 · Restore &amp; Rebuild</div>
 </div>
-
 <div class="nav">
-  <button class="ntab on" onclick="nav('today',this)"><span class="ntab-icon">&#128197;</span>Today</button>
-  <button class="ntab" onclick="nav('journal',this)"><span class="ntab-icon">&#128221;</span>Journal</button>
-  <button class="ntab" onclick="nav('gut',this)"><span class="ntab-icon">&#129704;</span>Gut</button>
-  <button class="ntab" onclick="nav('blood',this)"><span class="ntab-icon">&#128200;</span>Blood</button>
-  <button class="ntab" onclick="nav('week',this)"><span class="ntab-icon">&#128198;</span>Week</button>
-  <button class="ntab" onclick="nav('progress',this)"><span class="ntab-icon">&#128202;</span>Stats</button>
-  <button class="ntab" onclick="nav('history',this)"><span class="ntab-icon">&#128203;</span>Log</button>
-  <button class="ntab" onclick="nav('install',this)"><span class="ntab-icon">&#128241;</span>Install</button>
+  <button class="ntab on"   onclick="nav('today',this)"><span class="ntab-icon">📅</span>Today</button>
+  <button class="ntab"      onclick="nav('journal',this)"><span class="ntab-icon">📝</span>Journal</button>
+  <button class="ntab"      onclick="nav('gut',this)"><span class="ntab-icon">🫀</span>Gut</button>
+  <button class="ntab"      onclick="nav('blood',this)"><span class="ntab-icon">📈</span>Blood</button>
+  <button class="ntab"      onclick="nav('weight',this)"><span class="ntab-icon">⚖️</span>Weight</button>
+  <button class="ntab"      onclick="nav('feedback',this)"><span class="ntab-icon">💡</span>Goals</button>
+  <button class="ntab"      onclick="nav('week',this)"><span class="ntab-icon">🗓️</span>Week</button>
+  <button class="ntab"      onclick="nav('progress',this)"><span class="ntab-icon">📊</span>Stats</button>
+  <button class="ntab"      onclick="nav('history',this)"><span class="ntab-icon">📋</span>Log</button>
+  <button class="ntab"      onclick="nav('install',this)"><span class="ntab-icon">📱</span>Install</button>
 </div>
-
 <div class="content">
 
-<!-- ══ TODAY ══ -->
+<!-- TODAY -->
 <div id="v-today" class="view on">
-
   <div class="sec">Morning check-in</div>
   <div class="card card-rose">
     <div class="slider-wrap">
@@ -259,14 +259,12 @@ textarea::placeholder{color:var(--text-3)}
       </div>
     </div>
   </div>
-
   <div class="sec">Coffee</div>
   <div class="card card-amber">
-    <div style="font-size:12px;color:var(--text-2);margin-bottom:8px">Tap cups to count — max 2 recommended, never on empty stomach</div>
+    <div style="font-size:12px;color:var(--text-2);margin-bottom:8px">Tap to count — max 2, always after food</div>
     <div class="coffee-row" id="coffee-cups"></div>
     <div class="coffee-note" id="coffee-note"></div>
   </div>
-
   <div class="sec">Workout</div>
   <div class="card card-purple">
     <select id="workout-type" onchange="updateWorkoutLabel()">
@@ -295,26 +293,23 @@ textarea::placeholder{color:var(--text-3)}
       <input type="range" min="1" max="10" step="1" value="5" oninput="document.getElementById('int-val').textContent=this.value+' / 10'">
     </div>
   </div>
-
   <div class="sec">Meals</div>
   <div class="card card-teal" id="meals-card"></div>
-
   <div class="sec">Hydration</div>
   <div class="card card-blue">
-    <div style="font-size:12px;color:var(--text-3);margin-bottom:10px">Tap to fill — each glass = 250 ml</div>
+    <div style="font-size:12px;color:var(--text-3);margin-bottom:10px">Each glass = 250 ml · weekly goal: 8 glasses minimum</div>
     <div class="water-grid" id="water-glasses"></div>
-    <div style="margin-top:10px;font-size:12px;color:var(--text-2)"><span id="water-count">0</span> / 10 glasses &nbsp;·&nbsp; <span id="water-ml">0 ml</span></div>
-    <div class="prog-wrap" style="margin-top:6px"><div class="prog-fill" id="water-prog" style="width:0%;background:#378ADD"></div></div>
+    <div style="margin-top:10px;font-size:12px;color:var(--text-2)"><span id="water-count">0</span> / 10 glasses · <span id="water-ml">0 ml</span></div>
+    <div class="prog-wrap" style="margin-top:6px"><div class="prog-fill" id="water-prog" style="width:0%;background:linear-gradient(90deg,#29B6F6,#0277BD)"></div></div>
   </div>
-
   <div class="sec">Supplements</div>
   <div class="card card-green">
     <div class="log-row"><div><div class="log-label">Vitamin D3 + K2</div></div><div class="chk" id="s0" onclick="toggleChk(this)"></div></div>
     <div class="log-row"><div><div class="log-label">Magnesium glycinate</div><div class="log-sub">300 mg — at night</div></div><div class="chk" id="s1" onclick="toggleChk(this)"></div></div>
     <div class="log-row"><div><div class="log-label">Inositol</div><div class="log-sub">Myo 2 g + d-chiro 50 mg</div></div><div class="chk" id="s2" onclick="toggleChk(this)"></div></div>
     <div class="log-row"><div><div class="log-label">Omega-3 EPA + DHA</div></div><div class="chk" id="s3" onclick="toggleChk(this)"></div></div>
+    <div class="log-row"><div><div class="log-label">Vitamin B12</div><div class="log-sub">1000 mcg methylcobalamin — critical for gastritis</div></div><div class="chk" id="s4" onclick="toggleChk(this)"></div></div>
   </div>
-
   <div class="sec">Evening</div>
   <div class="card card-rose">
     <div class="slider-wrap">
@@ -322,16 +317,15 @@ textarea::placeholder{color:var(--text-3)}
       <input type="range" min="1" max="10" step="1" value="5" id="stress-sl" oninput="document.getElementById('stress-val').textContent=this.value+' / 10'">
     </div>
   </div>
-
   <button class="save-btn" onclick="saveDay()">Save today's log</button>
   <div class="save-msg" id="save-msg"></div>
 </div>
 
-<!-- ══ JOURNAL ══ -->
+<!-- JOURNAL -->
 <div id="v-journal" class="view">
   <div class="sec">Morning journal</div>
   <div class="card card-amber">
-    <div class="journal-prompt">Start your day with intention. Take 3–5 minutes before checking your phone.</div>
+    <div class="journal-prompt">Start your day with intention — 3 minutes before checking your phone.</div>
     <div class="journal-section-title">How do I feel right now?</div>
     <textarea id="j-feel" rows="2" placeholder="Physical sensations, emotional state, energy..."></textarea>
     <div class="journal-section-title">What am I grateful for today?</div>
@@ -341,10 +335,9 @@ textarea::placeholder{color:var(--text-3)}
     <div class="journal-section-title">Any anxiety or worry I want to release?</div>
     <textarea id="j-worry" rows="2" placeholder="Write it out and let it go..."></textarea>
   </div>
-
   <div class="sec">Evening reflection</div>
   <div class="card card-purple">
-    <div class="journal-prompt">Wind down with honesty. No judgment — just observation.</div>
+    <div class="journal-prompt">Wind down honestly. No judgment — just observation.</div>
     <div class="journal-section-title">What went well today?</div>
     <textarea id="j-wins" rows="2" placeholder="Even tiny wins count..."></textarea>
     <div class="journal-section-title">What was hard or draining?</div>
@@ -355,16 +348,7 @@ textarea::placeholder{color:var(--text-3)}
     <textarea id="j-tomorrow" rows="2" placeholder="One small adjustment..."></textarea>
     <div class="journal-section-title" style="margin-top:14px">Overall day rating</div>
     <div class="pain-scale" id="day-rating-btns" style="margin-top:6px">
-      <button class="pain-btn" onclick="setDayRating(this,1)">1</button>
-      <button class="pain-btn" onclick="setDayRating(this,2)">2</button>
-      <button class="pain-btn" onclick="setDayRating(this,3)">3</button>
-      <button class="pain-btn" onclick="setDayRating(this,4)">4</button>
-      <button class="pain-btn" onclick="setDayRating(this,5)">5</button>
-      <button class="pain-btn" onclick="setDayRating(this,6)">6</button>
-      <button class="pain-btn" onclick="setDayRating(this,7)">7</button>
-      <button class="pain-btn" onclick="setDayRating(this,8)">8</button>
-      <button class="pain-btn" onclick="setDayRating(this,9)">9</button>
-      <button class="pain-btn" onclick="setDayRating(this,10)">10</button>
+      <button class="pain-btn" onclick="setDayRating(this,1)">1</button><button class="pain-btn" onclick="setDayRating(this,2)">2</button><button class="pain-btn" onclick="setDayRating(this,3)">3</button><button class="pain-btn" onclick="setDayRating(this,4)">4</button><button class="pain-btn" onclick="setDayRating(this,5)">5</button><button class="pain-btn" onclick="setDayRating(this,6)">6</button><button class="pain-btn" onclick="setDayRating(this,7)">7</button><button class="pain-btn" onclick="setDayRating(this,8)">8</button><button class="pain-btn" onclick="setDayRating(this,9)">9</button><button class="pain-btn" onclick="setDayRating(this,10)">10</button>
     </div>
     <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-3);margin-top:4px"><span>Rough</span><span>Perfect</span></div>
   </div>
@@ -372,64 +356,49 @@ textarea::placeholder{color:var(--text-3)}
   <div class="save-msg" id="journal-save-msg"></div>
 </div>
 
-<!-- ══ GUT LOG ══ -->
+<!-- GUT -->
 <div id="v-gut" class="view">
   <div class="sec">Stomach symptoms today</div>
   <div class="card card-coral" style="border-left:3.5px solid #BF360C">
     <div style="font-size:12px;color:var(--text-2);margin-bottom:8px">Tap all that apply</div>
     <div class="symptom-grid" id="symptom-grid"></div>
     <div style="margin-top:14px">
-      <div style="font-size:12px;font-weight:500;color:var(--text-2);margin-bottom:6px">Discomfort level</div>
+      <div style="font-size:12px;font-weight:600;color:var(--text-2);margin-bottom:6px">Discomfort level</div>
       <div class="pain-scale" id="pain-scale-btns">
-        <button class="pain-btn" onclick="setPain(this,0)">0</button>
-        <button class="pain-btn" onclick="setPain(this,1)">1</button>
-        <button class="pain-btn" onclick="setPain(this,2)">2</button>
-        <button class="pain-btn" onclick="setPain(this,3)">3</button>
-        <button class="pain-btn" onclick="setPain(this,4)">4</button>
-        <button class="pain-btn" onclick="setPain(this,5)">5</button>
-        <button class="pain-btn" onclick="setPain(this,6)">6</button>
-        <button class="pain-btn" onclick="setPain(this,7)">7</button>
-        <button class="pain-btn" onclick="setPain(this,8)">8</button>
-        <button class="pain-btn" onclick="setPain(this,9)">9</button>
-        <button class="pain-btn" onclick="setPain(this,10)">10</button>
+        <button class="pain-btn" onclick="setPain(this,0)">0</button><button class="pain-btn" onclick="setPain(this,1)">1</button><button class="pain-btn" onclick="setPain(this,2)">2</button><button class="pain-btn" onclick="setPain(this,3)">3</button><button class="pain-btn" onclick="setPain(this,4)">4</button><button class="pain-btn" onclick="setPain(this,5)">5</button><button class="pain-btn" onclick="setPain(this,6)">6</button><button class="pain-btn" onclick="setPain(this,7)">7</button><button class="pain-btn" onclick="setPain(this,8)">8</button><button class="pain-btn" onclick="setPain(this,9)">9</button><button class="pain-btn" onclick="setPain(this,10)">10</button>
       </div>
       <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-3);margin-top:4px"><span>None</span><span>Severe</span></div>
     </div>
     <div style="margin-top:12px">
-      <div style="font-size:12px;font-weight:500;color:var(--text-2);margin-bottom:4px">Trigger notes</div>
+      <div style="font-size:12px;font-weight:600;color:var(--text-2);margin-bottom:4px">Trigger notes</div>
       <textarea id="gut-note" rows="2" placeholder="Possible food triggers, timing, stress connection..."></textarea>
     </div>
   </div>
-
   <div class="sec">Coffee today</div>
   <div class="card card-amber">
-    <div style="font-size:12px;color:var(--text-2);margin-bottom:8px">Track timing — important for gastritis management</div>
+    <div style="font-size:12px;color:var(--text-2);margin-bottom:8px">Track timing — critical for gastritis</div>
     <div class="coffee-row" id="coffee-cups-gut"></div>
     <div style="margin-top:10px">
-      <div style="font-size:12px;font-weight:500;color:var(--text-2);margin-bottom:4px">Coffee timing notes</div>
-      <textarea id="coffee-timing" rows="2" placeholder="e.g. 9am after breakfast, felt ok / 3pm on empty stomach, burning..."></textarea>
+      <div style="font-size:12px;font-weight:600;color:var(--text-2);margin-bottom:4px">Coffee timing notes</div>
+      <textarea id="coffee-timing" rows="2" placeholder="e.g. 9am after breakfast, felt ok / 3pm empty stomach, burning..."></textarea>
     </div>
   </div>
-
   <div class="sec">Gut trend — last 7 days</div>
   <div class="card" id="gut-trend-card"></div>
-
   <button class="save-btn" onclick="saveGut()">Save gut log</button>
   <div class="save-msg" id="gut-save-msg"></div>
 </div>
 
-<!-- ══ BLOOD SUGAR ══ -->
+<!-- BLOOD SUGAR -->
 <div id="v-blood" class="view">
-  <div class="alert" style="background:var(--blue-lt);border-color:var(--blue);color:var(--blue)">
-    Rate how you feel 30–60 min after each meal. This tracks energy crashes, brain fog, and cravings that signal blood sugar spikes — common with PCOS.
-  </div>
+  <div class="alert" style="background:var(--blue-lt);border-color:var(--blue);color:var(--blue)">Rate how you feel 30–60 min after each meal. Tracks energy crashes and blood sugar spikes — key for PCOS management.</div>
   <div class="sec">After-meal tracking — today</div>
   <div class="card" id="bs-card"></div>
   <div class="sec">What to watch for</div>
-  <div class="card">
+  <div class="card card-blue">
     <div class="log-row"><div><div class="log-label" style="font-size:13px">🟢 Stable</div><div class="log-sub">Steady energy, no cravings, clear head for 2–3 hrs</div></div></div>
     <div class="log-row"><div><div class="log-label" style="font-size:13px">🟡 Mild spike</div><div class="log-sub">Slight energy dip or sweet craving within 1 hr</div></div></div>
-    <div class="log-row"><div><div class="log-label" style="font-size:13px">🟠 Noticeable spike</div><div class="log-sub">Clear energy crash, brain fog, need to sit down</div></div></div>
+    <div class="log-row"><div><div class="log-label" style="font-size:13px">🟠 Noticeable</div><div class="log-sub">Clear energy crash, brain fog, need to sit down</div></div></div>
     <div class="log-row"><div><div class="log-label" style="font-size:13px">🔴 Strong spike</div><div class="log-sub">Shaky, irritable, intense hunger, palpitations</div></div></div>
   </div>
   <div class="sec">Pattern — last 7 days</div>
@@ -438,12 +407,47 @@ textarea::placeholder{color:var(--text-3)}
   <div class="save-msg" id="blood-save-msg"></div>
 </div>
 
-<!-- ══ WEEK ══ -->
+<!-- WEIGHT -->
+<div id="v-weight" class="view">
+  <div class="sec">Log today's weight</div>
+  <div class="card card-rose">
+    <div style="font-size:12px;color:var(--text-3);margin-bottom:10px">Weigh in Monday morning, same time, before eating</div>
+    <div class="weight-input-row">
+      <input type="number" class="weight-input" id="weight-input" placeholder="67.5" step="0.1" min="40" max="200">
+      <span style="font-size:14px;font-weight:500;color:var(--text-2)">kg</span>
+      <button class="wt-log-btn" onclick="logWeight()">Log</button>
+    </div>
+    <div id="weight-trend-summary"></div>
+  </div>
+  <div class="sec">Weight history</div>
+  <div class="card" id="weight-history-card"></div>
+  <div class="sec">Expected results — your timeline</div>
+  <div class="card card-green">
+    <div style="font-size:12px;color:var(--text-2);margin-bottom:10px;line-height:1.6">Starting range: <b>65–70 kg</b>. Results are non-linear — the first two weeks are mostly water, inflammation, and bloat reduction. Fat loss becomes visible from week 3–4.</div>
+    <div class="results-grid" id="results-grid"></div>
+  </div>
+  <div class="sec">What the scale won't show</div>
+  <div class="card card-teal">
+    <div class="log-row"><div><div class="log-label" style="font-size:13px">Inflammation reduction</div><div class="log-sub">Visible as less puffiness in face & abdomen — often before scale moves</div></div></div>
+    <div class="log-row"><div><div class="log-label" style="font-size:13px">Muscle gain</div><div class="log-sub">Strength training adds lean mass — clothes fit better before weight drops</div></div></div>
+    <div class="log-row"><div><div class="log-label" style="font-size:13px">Hormonal water retention</div><div class="log-sub">PCOS causes 0.5–2 kg fluctuation mid-cycle — normal, not failure</div></div></div>
+    <div class="log-row"><div><div class="log-label" style="font-size:13px">Bloat reduction</div><div class="log-sub">Gut healing reduces chronic bloat — flat stomach before weight loss</div></div></div>
+  </div>
+</div>
+
+<!-- WEEKLY GOALS & FEEDBACK -->
+<div id="v-feedback" class="view">
+  <div class="alert" style="background:var(--indigo-lt);border-color:#5C6BC0;color:var(--indigo)">Small, consistent improvements beat big changes every time. Each week's goal is designed to be achievable within your schedule.</div>
+  <div class="sec">Your weekly goals & feedback</div>
+  <div id="feedback-cards"></div>
+</div>
+
+<!-- WEEK -->
 <div id="v-week" class="view">
   <div class="week-nav">
-    <button onclick="changeWeek(-1)">&#8249;</button>
+    <button onclick="changeWeek(-1)">‹</button>
     <span id="week-label"></span>
-    <button onclick="changeWeek(1)">&#8250;</button>
+    <button onclick="changeWeek(1)">›</button>
   </div>
   <div class="day-grid" id="week-grid"></div>
   <div class="sec" style="margin-top:16px">Current phase</div>
@@ -452,57 +456,55 @@ textarea::placeholder{color:var(--text-3)}
   <div class="card" id="plan-card"></div>
 </div>
 
-<!-- ══ PROGRESS ══ -->
+<!-- PROGRESS -->
 <div id="v-progress" class="view">
   <div class="stat-row" id="prog-stats"></div>
   <div class="sec">This week — energy</div>
   <div class="card"><div class="bars-row" id="week-bars"></div></div>
   <div class="sec">Last 7 days</div>
   <div class="card">
-    <div style="display:grid;grid-template-columns:1fr 40px 40px 40px 36px;gap:6px;margin-bottom:6px">
+    <div style="display:grid;grid-template-columns:1fr 36px 36px 36px 30px;gap:4px;margin-bottom:6px">
       <div class="trend-hdr">Date</div>
-      <div class="trend-hdr" style="text-align:center">&#9889;</div>
-      <div class="trend-hdr" style="text-align:center">&#128543;</div>
-      <div class="trend-hdr" style="text-align:center">&#128564;</div>
-      <div class="trend-hdr" style="text-align:center">&#9749;</div>
+      <div class="trend-hdr" style="text-align:center">⚡</div>
+      <div class="trend-hdr" style="text-align:center">😣</div>
+      <div class="trend-hdr" style="text-align:center">😴</div>
+      <div class="trend-hdr" style="text-align:center">☕</div>
     </div>
     <div id="trend-rows"></div>
   </div>
 </div>
 
-<!-- ══ HISTORY ══ -->
+<!-- HISTORY -->
 <div id="v-history" class="view">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
     <div style="font-size:13px;color:var(--text-2)">All logged days</div>
-    <button onclick="clearAll()" style="font-size:12px;padding:6px 12px;border-radius:20px;border:0.5px solid var(--border-md);background:transparent;cursor:pointer;color:var(--text-2);font-family:'DM Sans',sans-serif">Clear all</button>
+    <button onclick="clearAll()" style="font-size:12px;padding:6px 12px;border-radius:20px;border:0.5px solid var(--border-md);background:transparent;cursor:pointer;color:var(--text-2);font-family:var(--font)">Clear all</button>
   </div>
   <div class="card" id="history-list"></div>
 </div>
 
-<!-- ══ INSTALL ══ -->
+<!-- INSTALL -->
 <div id="v-install" class="view">
   <div class="alert" style="background:var(--teal-lt);border-color:var(--teal-mid);color:var(--teal)">Add this file to your iPhone home screen for a full app experience — no App Store needed.</div>
   <div class="sec">How to install on iPhone</div>
   <div class="card">
     <div class="install-step"><div class="install-num">1</div><div class="install-text">Open this file in <b>Safari</b></div></div>
-    <div class="install-step"><div class="install-num">2</div><div class="install-text">Tap the <b>Share button</b> (box with arrow pointing up)</div></div>
+    <div class="install-step"><div class="install-num">2</div><div class="install-text">Tap the <b>Share button</b> (box with arrow up)</div></div>
     <div class="install-step"><div class="install-num">3</div><div class="install-text">Tap <b>"Add to Home Screen"</b></div></div>
     <div class="install-step"><div class="install-num">4</div><div class="install-text">Name it <b>"Wellness"</b> → tap <b>Add</b></div></div>
-    <div class="install-step"><div class="install-num">5</div><div class="install-text">Opens full screen like a native app. All data stays on your device.</div></div>
+    <div class="install-step"><div class="install-num">5</div><div class="install-text">Opens full screen. All data stays on your device.</div></div>
   </div>
 </div>
 
-</div><!-- /content -->
-</div><!-- /app -->
-
+</div></div>
 <script>
 const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 let weekOffset=0,currentMood='',currentPain=-1,currentDayRating=0,currentCoffee=0,state={};
 let bsRatings={},bsFeelings={},gutSymptoms=[];
 
-function loadState(){try{state=JSON.parse(localStorage.getItem('wt3_state')||'{}');}catch(e){state={}}}
-function saveState(){try{localStorage.setItem('wt3_state',JSON.stringify(state));}catch(e){}}
+function loadState(){try{state=JSON.parse(localStorage.getItem('wt4_state')||'{}');}catch(e){state={}}}
+function saveState(){try{localStorage.setItem('wt4_state',JSON.stringify(state));}catch(e){}}
 function todayKey(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function dateKey(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function fmtKey(k){const p=k.split('-');return p[2]+' '+MONTHS[parseInt(p[1])-1]}
@@ -517,6 +519,8 @@ function nav(id,btn){
   if(id==='history') renderHistory();
   if(id==='gut') renderGutTrend();
   if(id==='blood') renderBSCard();
+  if(id==='weight') renderWeight();
+  if(id==='feedback') renderFeedback();
 }
 
 function toggleChk(el){el.classList.toggle('done')}
@@ -526,69 +530,61 @@ function setPain(btn,v){document.querySelectorAll('#pain-scale-btns .pain-btn').
 
 /* ── Coffee ── */
 const MAX_COFFEE=5;
-function initCoffee(containerId,n){
-  const c=document.getElementById(containerId); if(!c) return;
+function initCoffee(cid,n){
+  const c=document.getElementById(cid);if(!c)return;
   c.innerHTML='';
   for(let i=0;i<MAX_COFFEE;i++){
-    const cup=document.createElement('div');
-    cup.className='cup'+(i<n?' filled':'');
-    cup.innerHTML='&#9749;';
-    cup.onclick=()=>setCoffee(containerId,i+1);
-    c.appendChild(cup);
+    const cup=document.createElement('div');cup.className='cup'+(i<n?' filled':'');cup.innerHTML='☕';
+    cup.onclick=()=>setCoffee(cid,i+1);c.appendChild(cup);
   }
-  updateCoffeeNote(n);
+  if(cid==='coffee-cups') updateCoffeeNote(n);
 }
-function setCoffee(containerId,n){
+function setCoffee(cid,n){
   currentCoffee=n;
-  document.querySelectorAll(`#${containerId} .cup`).forEach((c,i)=>c.classList.toggle('filled',i<n));
-  updateCoffeeNote(n);
-  // sync both containers
-  if(containerId==='coffee-cups') syncCoffeeContainer('coffee-cups-gut',n);
-  else syncCoffeeContainer('coffee-cups',n);
+  document.querySelectorAll(`#${cid} .cup`).forEach((c,i)=>c.classList.toggle('filled',i<n));
+  if(cid==='coffee-cups'){updateCoffeeNote(n);syncCoffee('coffee-cups-gut',n);}
+  else syncCoffee('coffee-cups',n);
 }
-function syncCoffeeContainer(id,n){
-  const c=document.getElementById(id); if(!c) return;
-  c.querySelectorAll('.cup').forEach((cup,i)=>cup.classList.toggle('filled',i<n));
-}
+function syncCoffee(id,n){const c=document.getElementById(id);if(c)c.querySelectorAll('.cup').forEach((cup,i)=>cup.classList.toggle('filled',i<n))}
 function updateCoffeeNote(n){
-  const el=document.getElementById('coffee-note'); if(!el) return;
-  if(n===0) el.textContent='';
-  else if(n===1) el.textContent='✓ One cup — have it after breakfast, never on an empty stomach.';
-  else if(n===2) el.textContent='⚠ Two cups — maximum recommended. Ensure both are after food.';
-  else el.textContent='⚠ '+n+' cups — above the recommended limit. This may irritate the gastric lining and elevate cortisol. Consider reducing.';
+  const el=document.getElementById('coffee-note');if(!el)return;
+  if(n===0)el.textContent='';
+  else if(n===1)el.textContent='✓ One cup — have it after your 9am breakfast, not before.';
+  else if(n===2)el.textContent='⚠ Two cups max — ensure both are after food. No coffee after 2pm for better sleep.';
+  else el.textContent='⚠ '+n+' cups — above recommended limit. Raises cortisol and irritates gastric lining.';
 }
 
-/* ── Meals ── */
+/* ── Meals (updated schedule) ── */
 const MEALS=[
-  {id:'m0',title:'Breakfast',time:'7:00–7:30 am',optional:false,options:[
-    {name:'Warm oat porridge with berries & seeds',desc:'GF oats, mixed berries, ground flaxseed, pumpkin seeds, cinnamon. Optional soft-boiled egg alongside.',tags:[['Low GI','#EAF3DE','#27500A'],['Gut-safe','#E1F5EE','#085041']]},
-    {name:'Scrambled eggs with smoked salmon on rice toast',desc:'2 eggs, 50 g smoked salmon, 2 rice cakes, avocado. High protein, selenium-rich.',tags:[['High protein','#E6F1FB','#0C447C'],['Selenium','#FAEEDA','#633806']]},
-    {name:'Chia pudding with mango & coconut',desc:'3 tbsp chia seeds soaked overnight in oat milk, mango, coconut flakes, honey.',tags:[['Omega-3','#E1F5EE','#085041'],['Fibre','#EAF3DE','#27500A']]},
+  {id:'m0',title:'Wake-up snack',time:'7:00–7:30 am · small & immediate',optional:false,cortisol:true,options:[
+    {name:'Banana + almond butter',desc:'½ banana, 1 tbsp almond butter. Eaten within 30 min of waking. Blunts cortisol spike, stabilises blood sugar before work starts.',tags:[['Cortisol blunt','#FBE9E7','#BF360C'],['Quick','#EAF3DE','#27500A']]},
+    {name:'2 rice cakes + nut butter',desc:'2 plain rice cakes, 1 tbsp almond or peanut butter. Fast, light, easy on gastritis. Gets something in before coffee.',tags:[['Gut-safe','#E0F2F1','#00796B'],['Low acid','#E8F5E9','#2E7D32']]},
+    {name:'Small Greek yoghurt pot',desc:'80 g plain full-fat yoghurt, drizzle of honey. Portable, probiotic, requires zero prep. Perfect for rushed mornings.',tags:[['Probiotic','#F3E5F5','#6A1B9A'],['Protein','#E1F5FE','#0277BD']]},
   ]},
-  {id:'m1',title:'Mid-morning snack',time:'10:30 am',optional:false,options:[
-    {name:'Greek yoghurt with walnuts & honey',desc:'120 g full-fat plain yoghurt, small handful walnuts, drizzle of raw honey.',tags:[['Gut healing','#EEEDFE','#3C3489'],['Protein','#E6F1FB','#0C447C']]},
-    {name:'Banana with almond butter',desc:'1 medium banana, 1.5 tbsp almond butter. Magnesium + potassium for recovery.',tags:[['Magnesium','#FAEEDA','#633806'],['Energy','#EAF3DE','#27500A']]},
-    {name:'Hummus with carrot & cucumber sticks',desc:'3 tbsp hummus, sliced carrot and cucumber. Fibre, plant protein, low acid.',tags:[['Low GI','#EAF3DE','#27500A'],['Anti-inflam.','#E1F5EE','#085041']]},
+  {id:'m1',title:'Breakfast',time:'9:00–9:30 am · proper meal',optional:false,cortisol:true,options:[
+    {name:'Warm oat porridge with berries & seeds',desc:'GF oats, mixed berries, ground flaxseed, pumpkin seeds, cinnamon. Steady energy through your morning meetings. Low GI — no mid-morning crash.',tags:[['Low GI','#E8F5E9','#2E7D32'],['Anti-stress','#FBE9E7','#BF360C']]},
+    {name:'Scrambled eggs with smoked salmon & avocado',desc:'2 eggs, 50 g smoked salmon, ½ avocado, 1 rice cake. High protein + omega-3 — supports brain focus for high-demand work hours.',tags:[['Brain focus','#E1F5FE','#0277BD'],['High protein','#F3E5F5','#6A1B9A']]},
+    {name:'Chia pudding with mango & seeds',desc:'3 tbsp chia soaked overnight in oat milk, mango, pumpkin seeds, cinnamon. Prep the night before — zero morning effort.',tags:[['Prep ahead','#FFF3E0','#E65100'],['Omega-3','#E0F2F1','#00796B']]},
   ]},
-  {id:'m2',title:'Lunch',time:'1:00 pm',optional:false,options:[
-    {name:'Baked salmon with quinoa & roasted courgette',desc:'130 g salmon, 80 g quinoa, roasted courgette, olive oil, lemon, dill.',tags:[['Omega-3','#E1F5EE','#085041'],['Selenium','#FAEEDA','#633806']]},
-    {name:'Turkey & sweet potato bowl',desc:'120 g ground turkey, roasted sweet potato, steamed broccoli, tahini dressing.',tags:[['High protein','#E6F1FB','#0C447C'],['Low GI','#EAF3DE','#27500A']]},
-    {name:'Lentil & spinach soup with GF bread',desc:'Red lentil soup with spinach, cumin, ginger, carrot. 1 slice GF sourdough.',tags:[['Iron-rich','#FBEAF0','#72243E'],['Gut-safe','#E1F5EE','#085041']]},
+  {id:'m2',title:'Lunch',time:'12:30–1:00 pm',optional:false,cortisol:true,options:[
+    {name:'Baked salmon with quinoa & roasted courgette',desc:'130 g salmon, 80 g quinoa, roasted courgette, olive oil, lemon. Selenium supports thyroid. Eat at your desk or away — don\'t skip this for a call.',tags:[['Thyroid support','#E0F2F1','#00796B'],['Omega-3','#E8F5E9','#2E7D32']]},
+    {name:'Turkey, sweet potato & tahini bowl',desc:'120 g ground turkey, roasted sweet potato, steamed broccoli, tahini. Prep on Sunday — reheats in 2 min. Keeps you full and focused through afternoon.',tags:[['Meal-prep','#FFF3E0','#E65100'],['High protein','#F3E5F5','#6A1B9A']]},
+    {name:'Lentil & spinach soup + GF sourdough',desc:'Red lentil soup with spinach, cumin, ginger. 1 slice GF sourdough. Iron + folate for concentration. Gentle on gastritis.',tags:[['Iron-rich','#FCE4EC','#C2185B'],['Gut-safe','#E0F2F1','#00796B']]},
   ]},
-  {id:'m3',title:'Afternoon snack',time:'4:00 pm',optional:false,options:[
-    {name:'Rice cakes with avocado & turkey slices',desc:'2 rice cakes, ¼ mashed avocado, 50 g turkey breast.',tags:[['Stable energy','#EAF3DE','#27500A'],['Low acid','#E1F5EE','#085041']]},
-    {name:'Hard-boiled eggs & handful of olives',desc:'2 hard-boiled eggs, 8–10 olives. Protein + healthy fat.',tags:[['Protein','#E6F1FB','#0C447C'],['Healthy fats','#FAEEDA','#633806']]},
-    {name:'Protein smoothie',desc:'1 scoop protein, oat milk, ½ banana, 1 tbsp almond butter, cinnamon.',tags:[['Pre-workout','#EEEDFE','#3C3489'],['High protein','#E6F1FB','#0C447C']]},
+  {id:'m3',title:'Afternoon snack',time:'3:30–4:00 pm · stress window',optional:false,cortisol:true,options:[
+    {name:'Rice cakes with avocado & turkey',desc:'2 rice cakes, ¼ avocado, 50 g turkey. Critical timing — 3–4 pm is peak cortisol for desk workers. This prevents the stress-driven sugar craving.',tags:[['Cortisol window','#FBE9E7','#BF360C'],['Stable energy','#E8F5E9','#2E7D32']]},
+    {name:'Hard-boiled eggs & olives',desc:'2 eggs, 8–10 olives. Portable, zero prep, protein + fat — blunts the afternoon cortisol-insulin rollercoaster that hits high-stress office workers.',tags:[['Portable','#FFF3E0','#E65100'],['Blood sugar','#E1F5FE','#0277BD']]},
+    {name:'Protein smoothie',desc:'1 scoop whey/pea protein, oat milk, ½ banana, 1 tbsp almond butter, cinnamon. Best choice on strength or HIIT evening days — acts as pre-workout fuel.',tags:[['Pre-workout','#F3E5F5','#6A1B9A'],['High protein','#E1F5FE','#0277BD']]},
   ]},
-  {id:'m4',title:'Dinner',time:'7:00–7:30 pm',optional:false,options:[
-    {name:'Chicken & vegetable bone broth soup',desc:'Slow-cooked chicken thigh, carrot, sweet potato, courgette, ginger.',tags:[['Gut repair','#EEEDFE','#3C3489'],['Anti-inflam.','#E1F5EE','#085041']]},
-    {name:'Baked cod with mashed sweet potato & steamed greens',desc:'150 g cod, mashed sweet potato, steamed courgette or green beans.',tags:[['High protein','#E6F1FB','#0C447C'],['Low GI','#EAF3DE','#27500A']]},
-    {name:'Lean beef stir-fry with rice noodles & bok choy',desc:'120 g lean beef, rice noodles, bok choy, ginger, tamari, sesame oil.',tags:[['Iron-rich','#FBEAF0','#72243E'],['Recovery','#FAEEDA','#633806']]},
+  {id:'m4',title:'Dinner',time:'7:00–7:30 pm · post-workout',optional:false,cortisol:false,options:[
+    {name:'Chicken & vegetable bone broth soup',desc:'Slow-cooked chicken thigh, carrot, sweet potato, courgette, ginger. Bone broth collagen repairs gastric lining. Anti-inflammatory — lowers end-of-day cortisol.',tags:[['Gut repair','#F3E5F5','#6A1B9A'],['Anti-inflam.','#E0F2F1','#00796B']]},
+    {name:'Baked cod with sweet potato mash & greens',desc:'150 g cod, mashed sweet potato with olive oil, steamed courgette. Light but protein-dense. Digests easily before sleep.',tags:[['Easy digestion','#E0F2F1','#00796B'],['High protein','#F3E5F5','#6A1B9A']]},
+    {name:'Lean beef stir-fry with rice noodles & bok choy',desc:'120 g lean beef, rice noodles, bok choy, ginger, tamari. Iron-rich recovery after strength training. Zinc from beef supports thyroid.',tags:[['Iron-rich','#FCE4EC','#C2185B'],['Post-training','#FFF3E0','#E65100']]},
   ]},
-  {id:'m5',title:'Evening snack',time:'9:00–9:30 pm',optional:true,options:[
-    {name:'Warm golden milk',desc:'Oat milk, turmeric, ginger, cinnamon, honey. Anti-inflammatory, sleep-promoting.',tags:[['Cortisol','#FAEEDA','#633806'],['Sleep','#EAF3DE','#27500A']]},
-    {name:'Kefir with a drizzle of honey',desc:'150 ml plain kefir. Probiotic for gastric lining repair.',tags:[['Gut healing','#EEEDFE','#3C3489'],['Probiotic','#E1F5EE','#085041']]},
-    {name:'Cottage cheese & berries',desc:'100 g cottage cheese, small handful blueberries. Overnight muscle repair.',tags:[['Overnight protein','#E6F1FB','#0C447C'],['Low GI','#EAF3DE','#27500A']]},
+  {id:'m5',title:'Evening snack',time:'9:00–9:30 pm',optional:true,cortisol:false,options:[
+    {name:'Warm golden milk',desc:'Oat milk, turmeric, ginger, cinnamon, honey. Anti-inflammatory. Lowers cortisol before sleep. The single best wind-down drink for a high-stress lifestyle.',tags:[['Cortisol down','#FBE9E7','#BF360C'],['Sleep','#E8F5E9','#2E7D32']]},
+    {name:'Kefir with honey',desc:'150 ml plain kefir, drizzle honey. Probiotic — repairs gastric lining overnight. Light and easy to digest.',tags:[['Probiotic','#F3E5F5','#6A1B9A'],['Gut healing','#E0F2F1','#00796B']]},
+    {name:'Cottage cheese & blueberries',desc:'100 g cottage cheese, small handful blueberries. Slow casein protein feeds muscle repair overnight. Low GI — no night-time insulin spike.',tags:[['Overnight repair','#E1F5FE','#0277BD'],['Low GI','#E8F5E9','#2E7D32']]},
   ]},
 ];
 let mealSelections={};
@@ -601,16 +597,17 @@ function renderMeals(){
     const sel=mealSelections[slot.id];
     const isDone=saved?.meals?.[MEALS.indexOf(slot)]||false;
     const chosenName=sel!=null?slot.options[sel].name:'';
+    const cortisolTag=slot.cortisol?'<span style="font-size:9px;background:#FBE9E7;color:#BF360C;font-weight:600;padding:1px 6px;border-radius:6px;margin-left:4px">cortisol-aware</span>':'';
     return `<div class="meal-slot" id="slot-${slot.id}">
       <div class="meal-header" onclick="toggleSlot('${slot.id}')">
         <div class="meal-left">
-          <div class="meal-title">${slot.title}${slot.optional?' <span style="font-size:10px;color:var(--text-3)">(optional)</span>':''}</div>
+          <div class="meal-title">${slot.title}${slot.optional?'<span style="font-size:10px;color:var(--text-3)"> (optional)</span>':''}${cortisolTag}</div>
           <div class="meal-time">${slot.time}</div>
           ${chosenName?`<div class="meal-chosen">${chosenName}</div>`:''}
         </div>
         <div class="meal-right">
           <div class="chk${isDone?' done':''}" id="${slot.id}" onclick="event.stopPropagation();toggleChk(this);updateMeals()"></div>
-          <div class="meal-expand-icon" id="icon-${slot.id}">&#8964;</div>
+          <div class="meal-expand-icon" id="icon-${slot.id}">⌄</div>
         </div>
       </div>
       <div class="meal-options" id="opts-${slot.id}">
@@ -625,36 +622,31 @@ function renderMeals(){
     </div>`;
   }).join('')+`
   <div style="margin-top:12px">
-    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-3);margin-bottom:4px">
-      <span>Meals logged</span><span id="meal-count">0 / 5</span>
-    </div>
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-3);margin-bottom:4px"><span>Meals logged</span><span id="meal-count">0 / 5</span></div>
     <div class="prog-wrap"><div class="prog-fill" id="meal-prog" style="width:0%;background:linear-gradient(90deg,#C2185B,#8E24AA)"></div></div>
   </div>`;
   updateMeals();
 }
 function toggleSlot(id){
   const opts=document.getElementById('opts-'+id),icon=document.getElementById('icon-'+id);
-  const isOpen=opts.classList.contains('open');
+  const open=opts.classList.contains('open');
   document.querySelectorAll('.meal-options').forEach(o=>o.classList.remove('open'));
   document.querySelectorAll('.meal-expand-icon').forEach(i=>i.classList.remove('open'));
-  if(!isOpen){opts.classList.add('open');icon.classList.add('open')}
+  if(!open){opts.classList.add('open');icon.classList.add('open')}
 }
 function selectMealOpt(slotId,idx){
   mealSelections[slotId]=idx;
   const slot=MEALS.find(s=>s.id===slotId);
   document.querySelectorAll(`#opts-${slotId} .meal-opt`).forEach((el,i)=>el.classList.toggle('selected',i===idx));
-  const chosenDiv=document.querySelector(`#slot-${slotId} .meal-chosen`);
-  const titleEl=document.querySelector(`#slot-${slotId} .meal-left`);
-  if(chosenDiv) chosenDiv.textContent=slot.options[idx].name;
-  else{const d=document.createElement('div');d.className='meal-chosen';d.textContent=slot.options[idx].name;titleEl.appendChild(d)}
-  document.getElementById(slotId).classList.add('done');
-  updateMeals();
+  const cd=document.querySelector(`#slot-${slotId} .meal-chosen`),tl=document.querySelector(`#slot-${slotId} .meal-left`);
+  if(cd)cd.textContent=slot.options[idx].name;
+  else{const d=document.createElement('div');d.className='meal-chosen';d.textContent=slot.options[idx].name;tl.appendChild(d)}
+  document.getElementById(slotId).classList.add('done');updateMeals();
 }
 function updateMeals(){
   const done=MEALS.filter((s,i)=>i<5&&document.getElementById(s.id)?.classList.contains('done')).length;
   const ce=document.getElementById('meal-count'),pe=document.getElementById('meal-prog');
-  if(ce) ce.textContent=done+' / 5';
-  if(pe) pe.style.width=Math.round(done/5*100)+'%';
+  if(ce)ce.textContent=done+' / 5';if(pe)pe.style.width=Math.round(done/5*100)+'%';
 }
 
 /* ── Water ── */
@@ -665,102 +657,132 @@ function initWater(){
   updateWaterUI(saved);
 }
 function setWater(n){document.querySelectorAll('.glass').forEach((g,i)=>g.classList.toggle('full',i<n));updateWaterUI(n)}
-function updateWaterUI(n){document.getElementById('water-count').textContent=n;document.getElementById('water-ml').textContent=(n*250).toLocaleString()+' ml';document.getElementById('water-prog').style.width=Math.round(n/10*100)+'%'}
+function updateWaterUI(n){
+  document.getElementById('water-count').textContent=n;
+  document.getElementById('water-ml').textContent=(n*250).toLocaleString()+' ml';
+  document.getElementById('water-prog').style.width=Math.round(n/10*100)+'%';
+}
 function getWater(){return document.querySelectorAll('.glass.full').length}
 
-/* ── Gut symptoms ── */
-const SYMPTOMS=['Bloating','Nausea','Reflux','Cramping','Constipation','Diarrhoea','Burning','Wind','Loss of appetite','Fullness','Throat pain','Fatigue after eating'];
+/* ── Gut ── */
+const SYMPTOMS=['Bloating','Nausea','Reflux','Cramping','Constipation','Diarrhoea','Burning','Wind','Low appetite','Fullness','Throat pain','Post-meal fatigue'];
 function renderSymptomGrid(){
-  const saved=state[todayKey()]?.gutSymptoms||[];
-  gutSymptoms=[...saved];
-  document.getElementById('symptom-grid').innerHTML=SYMPTOMS.map(s=>`
-    <button class="sym-btn${gutSymptoms.includes(s)?' sel':''}" onclick="toggleSymptom(this,'${s}')">${s}</button>`).join('');
+  const saved=state[todayKey()]?.gutSymptoms||[];gutSymptoms=[...saved];
+  document.getElementById('symptom-grid').innerHTML=SYMPTOMS.map(s=>`<button class="sym-btn${gutSymptoms.includes(s)?' sel':''}" onclick="toggleSymptom(this,'${s}')">${s}</button>`).join('');
 }
-function toggleSymptom(btn,sym){
-  btn.classList.toggle('sel');
-  if(gutSymptoms.includes(sym)) gutSymptoms=gutSymptoms.filter(s=>s!==sym);
-  else gutSymptoms.push(sym);
-}
+function toggleSymptom(btn,sym){btn.classList.toggle('sel');if(gutSymptoms.includes(sym))gutSymptoms=gutSymptoms.filter(s=>s!==sym);else gutSymptoms.push(sym)}
 
 /* ── Blood sugar ── */
-const MEAL_NAMES=['Breakfast','Mid-morning snack','Lunch','Afternoon snack','Dinner','Evening snack'];
+const MEAL_NAMES=['Wake-up snack','Breakfast','Lunch','Afternoon snack','Dinner','Evening snack'];
 const BS_FEELINGS=['Energised','Steady','Slight dip','Brain fog','Crash','Sweet craving','Shaky','Irritable'];
-
 function renderBSCard(){
   const saved=state[todayKey()];
-  if(saved?.bsRatings) bsRatings=Object.assign({},saved.bsRatings);
-  if(saved?.bsFeelings) bsFeelings=Object.assign({},saved.bsFeelings);
+  if(saved?.bsRatings)bsRatings=Object.assign({},saved.bsRatings);
+  if(saved?.bsFeelings)bsFeelings=Object.assign({},saved.bsFeelings);
   const card=document.getElementById('bs-card');
   card.innerHTML=MEAL_NAMES.map((name,mi)=>{
-    const r=bsRatings[mi]||0;
-    const f=bsFeelings[mi]||[];
+    const r=bsRatings[mi]||0,f=bsFeelings[mi]||[];
     return `<div class="bs-entry">
       <div class="bs-header"><div class="bs-meal-name">${name}</div><div class="bs-time">30–60 min after</div></div>
-      <div class="bs-scale">
-        <div class="bs-label" style="font-size:9px">Low</div>
-        <div class="bs-dots">
-          ${[1,2,3,4,5].map(v=>`<div class="bs-dot${r===v?' sel-'+v:''}" onclick="setBSRating(${mi},${v})"></div>`).join('')}
-        </div>
-        <div class="bs-label" style="font-size:9px;text-align:right">High</div>
-      </div>
+      <div class="bs-scale"><div class="bs-label" style="font-size:9px">Low</div>
+        <div class="bs-dots">${[1,2,3,4,5].map(v=>`<div class="bs-dot${r===v?' sel-'+v:''}" onclick="setBSRating(${mi},${v})"></div>`).join('')}</div>
+        <div class="bs-label" style="font-size:9px;text-align:right">High</div></div>
       <div class="bs-legend"><span>Stable</span><span>Mild</span><span>Notable</span><span>High</span><span>Spike</span></div>
-      <div class="bs-feeling-row">
-        ${BS_FEELINGS.map(fl=>`<button class="bs-feel-btn${f.includes(fl)?' sel':''}" onclick="toggleBSFeeling(${mi},'${fl}')">${fl}</button>`).join('')}
-      </div>
+      <div class="bs-feeling-row">${BS_FEELINGS.map(fl=>`<button class="bs-feel-btn${f.includes(fl)?' sel':''}" onclick="toggleBSFeeling(${mi},'${fl}')">${fl}</button>`).join('')}</div>
     </div>`;
-  }).join('');
-  renderBSHistory();
+  }).join('');renderBSHistory();
 }
-
-function setBSRating(mi,v){
-  bsRatings[mi]=v;
-  const entry=document.querySelectorAll('.bs-entry')[mi];
-  entry.querySelectorAll('.bs-dot').forEach((d,i)=>{
-    d.className='bs-dot'+(bsRatings[mi]===i+1?' sel-'+(i+1):'');
-  });
-}
-function toggleBSFeeling(mi,fl){
-  if(!bsFeelings[mi]) bsFeelings[mi]=[];
-  const idx=bsFeelings[mi].indexOf(fl);
-  if(idx>-1) bsFeelings[mi].splice(idx,1);
-  else bsFeelings[mi].push(fl);
-  const entry=document.querySelectorAll('.bs-entry')[mi];
-  entry.querySelectorAll('.bs-feel-btn').forEach(b=>{b.classList.toggle('sel',bsFeelings[mi].includes(b.textContent))});
-}
-
+function setBSRating(mi,v){bsRatings[mi]=v;const entry=document.querySelectorAll('.bs-entry')[mi];entry.querySelectorAll('.bs-dot').forEach((d,i)=>{d.className='bs-dot'+(bsRatings[mi]===i+1?' sel-'+(i+1):'');})}
+function toggleBSFeeling(mi,fl){if(!bsFeelings[mi])bsFeelings[mi]=[];const idx=bsFeelings[mi].indexOf(fl);if(idx>-1)bsFeelings[mi].splice(idx,1);else bsFeelings[mi].push(fl);const entry=document.querySelectorAll('.bs-entry')[mi];entry.querySelectorAll('.bs-feel-btn').forEach(b=>{b.classList.toggle('sel',bsFeelings[mi].includes(b.textContent))})}
 function renderBSHistory(){
-  const card=document.getElementById('bs-history-card'); if(!card) return;
+  const card=document.getElementById('bs-history-card');if(!card)return;
   const keys=Object.keys(state).sort().slice(-7).reverse();
-  if(!keys.length){card.innerHTML='<div style="font-size:13px;color:var(--text-3)">No data yet.</div>';return;}
-  const spikeCols=['','#5DCAA5','#A8D97F','#F5C842','#F08C3A','#E05252'];
-  card.innerHTML=keys.map(k=>{
-    const d=state[k];
-    const ratings=d.bsRatings||{};
-    const avg=Object.values(ratings).length?Math.round(Object.values(ratings).reduce((a,b)=>a+b,0)/Object.values(ratings).length*10)/10:null;
-    const dots=MEAL_NAMES.map((_,i)=>{const r=ratings[i]||0;return `<div style="width:10px;height:10px;border-radius:50%;background:${r?spikeCols[r]:'var(--gray-lt)'}"></div>`}).join('');
-    return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:0.5px solid var(--border)">
-      <div style="font-size:11px;color:var(--text-3);min-width:50px">${fmtKey(k)}</div>
-      <div style="display:flex;gap:4px;align-items:center">${dots}</div>
-      ${avg!==null?`<div style="font-size:11px;font-weight:500;color:${avg<=2?'#27500A':avg<=3?'#854F0B':'#712B13'}">${avg} avg</div>`:''}
-    </div>`;
-  }).join('');
+  if(!keys.length){card.innerHTML='<div style="font-size:13px;color:var(--text-3)">No data yet.</div>';return}
+  const sc=['','#26A69A','#66BB6A','#FDD835','#FF8F00','#E53935'];
+  card.innerHTML=keys.map(k=>{const d=state[k],ratings=d.bsRatings||{};const avg=Object.values(ratings).length?Math.round(Object.values(ratings).reduce((a,b)=>a+b,0)/Object.values(ratings).length*10)/10:null;const dots=MEAL_NAMES.map((_,i)=>{const r=ratings[i]||0;return `<div style="width:10px;height:10px;border-radius:50%;background:${r?sc[r]:'var(--gray-lt)'}"></div>`}).join('');return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:0.5px solid var(--border)"><div style="font-size:11px;color:var(--text-3);min-width:50px">${fmtKey(k)}</div><div style="display:flex;gap:4px;align-items:center">${dots}</div>${avg!==null?`<div style="font-size:11px;font-weight:600;color:${avg<=2?'#27500A':avg<=3?'#854F0B':'#712B13'}">${avg}</div>`:''}</div>`;}).join('');
+}
+function renderGutTrend(){
+  const card=document.getElementById('gut-trend-card');if(!card)return;
+  const keys=Object.keys(state).sort().slice(-7).reverse();
+  if(!keys.length){card.innerHTML='<div style="font-size:13px;color:var(--text-3)">No gut entries yet.</div>';return}
+  card.innerHTML=keys.map(k=>{const d=state[k],pain=d.gutPain>=0?d.gutPain:null,syms=d.gutSymptoms||[],painCol=pain===null?'var(--text-3)':pain<=2?'#27500A':pain<=5?'#854F0B':'#712B13';return `<div style="padding:8px 0;border-bottom:0.5px solid var(--border)"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><div style="font-size:12px;font-weight:500;color:var(--text)">${fmtKey(k)}</div>${pain!==null?`<div style="font-size:12px;font-weight:600;color:${painCol}">Pain ${pain}/10</div>`:'<div style="font-size:11px;color:var(--text-3)">Not logged</div>'}</div>${syms.length?`<div style="display:flex;gap:4px;flex-wrap:wrap">${syms.map(s=>`<span style="font-size:9px;background:var(--coral-lt);color:var(--coral);padding:2px 7px;border-radius:8px;font-weight:600">${s}</span>`).join('')}</div>`:''}</div>`;}).join('');
 }
 
-function renderGutTrend(){
-  const card=document.getElementById('gut-trend-card'); if(!card) return;
-  const keys=Object.keys(state).sort().slice(-7).reverse();
-  if(!keys.length){card.innerHTML='<div style="font-size:13px;color:var(--text-3)">No gut entries yet.</div>';return;}
-  card.innerHTML=keys.map(k=>{
-    const d=state[k];
-    const pain=d.gutPain>=0?d.gutPain:null;
-    const syms=d.gutSymptoms||[];
-    const painCol=pain===null?'var(--text-3)':pain<=2?'#27500A':pain<=5?'#854F0B':'#712B13';
-    return `<div style="padding:8px 0;border-bottom:0.5px solid var(--border)">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-        <div style="font-size:12px;font-weight:500;color:var(--text)">${fmtKey(k)}</div>
-        ${pain!==null?`<div style="font-size:12px;font-weight:500;color:${painCol}">Pain ${pain}/10</div>`:'<div style="font-size:11px;color:var(--text-3)">Not logged</div>'}
+/* ── Weight tracker ── */
+function logWeight(){
+  const val=parseFloat(document.getElementById('weight-input').value);
+  if(!val||val<30||val>250){alert('Please enter a valid weight.');return}
+  const key=todayKey();
+  if(!state.weightLog)state.weightLog=[];
+  const existing=state.weightLog.findIndex(e=>e.date===key);
+  if(existing>=0)state.weightLog[existing].kg=val;
+  else state.weightLog.push({date:key,kg:val});
+  state.weightLog.sort((a,b)=>a.date.localeCompare(b.date));
+  saveState();renderWeight();
+}
+function renderWeight(){
+  if(!state.weightLog)state.weightLog=[];
+  const log=state.weightLog;
+  const histCard=document.getElementById('weight-history-card');
+  if(!histCard)return;
+  const trend=document.getElementById('weight-trend-summary');
+  if(log.length>=2){
+    const first=log[0].kg,last=log[log.length-1].kg,diff=Math.round((last-first)*10)/10;
+    const col=diff<0?'#2E7D32':diff>0?'#C2185B':'#546E7A';
+    const arrow=diff<0?'↓':diff>0?'↑':'→';
+    if(trend)trend.innerHTML=`<div style="display:flex;gap:12px;margin-top:6px"><div style="font-size:12px;color:var(--text-2)">Start: <b>${first} kg</b></div><div style="font-size:12px;color:var(--text-2)">Now: <b>${last} kg</b></div><div style="font-size:13px;font-weight:700;color:${col}">${arrow} ${Math.abs(diff)} kg</div></div>`;
+  }else if(trend)trend.innerHTML='<div style="font-size:12px;color:var(--text-3);margin-top:6px">Log at least 2 entries to see your trend.</div>';
+  if(!log.length){histCard.innerHTML='<div style="font-size:13px;color:var(--text-3)">No weight entries yet. Log your first reading above.</div>';return}
+  histCard.innerHTML=log.slice().reverse().map((e,i,arr)=>{
+    const prev=arr[i+1];const delta=prev?Math.round((e.kg-prev.kg)*10)/10:null;
+    let deltaHtml='';
+    if(delta!==null){const cls=delta<0?'wt-down':delta>0?'wt-up':'wt-same';const sym=delta<0?'↓':delta>0?'↑':'→';deltaHtml=`<span class="wt-delta ${cls}">${sym} ${Math.abs(delta)} kg</span>`;}
+    return `<div class="wt-entry"><div class="wt-date">${fmtKey(e.date)} ${e.date.split('-')[0]}</div><div style="display:flex;align-items:center;gap:10px"><div class="wt-val">${e.kg} kg</div>${deltaHtml}</div></div>`;
+  }).join('');
+  renderResultsGrid(log);
+}
+const RESULTS=[
+  {week:'Week 1–2',text:'Bloating reduces. Face less puffy. 0.5–1 kg water weight gone. Energy more stable in mornings.'},
+  {week:'Week 2–3',text:'Sleep quality improves. Gut discomfort 30–40% less. Cortisol response starts to normalise with meal timing.'},
+  {week:'Week 3–4',text:'First visible fat loss — 0.5–1 kg. Clothes slightly looser around waist. Concentration noticeably better.'},
+  {week:'Week 4–6',text:'Consistent energy without afternoon crash. Cravings reduce. Cycle may show early signs of regulation (PCOS).'},
+  {week:'Week 6–8',text:'1–2 kg fat loss cumulative. Strength gains visible. Stress resilience measurably improved. Less brain fog.'},
+  {week:'Week 8–12',text:'Body recomposition ongoing. 2–4 kg total loss possible. Metabolic rate rising from muscle gain. Best results here.'},
+];
+function renderResultsGrid(log){
+  const grid=document.getElementById('results-grid');if(!grid)return;
+  const startKg=log.length?log[0].kg:67.5;
+  grid.innerHTML=RESULTS.map(r=>`<div class="result-item"><div class="result-week">${r.week}</div><div class="result-text">${r.text}</div></div>`).join('');
+}
+
+/* ── Weekly feedback ── */
+const WEEKLY_FEEDBACK=[
+  {week:1,bg:'#E8F5E9',bar:'#66BB6A',goal:'Your goal this week: drink at least 8 glasses of water every day.',improvements:['Start each morning with a glass of water before anything else','Add one extra glass at every meal to build the habit naturally','Keep a water bottle at your desk — visible reminder, less effort'],results:['Improved gut lining hydration for gastritis','Better kidney function and cortisol clearance','Reduced afternoon fatigue and headaches']},
+  {week:2,bg:'#E0F2F1',bar:'#26A69A',goal:'Your goal this week: eat your wake-up snack within 30 minutes of getting up, every day.',improvements:['Prep the snack the night before so there\'s zero friction in the morning','Set a phone reminder for 7 minutes after your alarm','Keep banana + almond butter on the kitchen counter, not in a cupboard'],results:['Blunted morning cortisol spike','More stable blood sugar before your first meeting','Less mid-morning hunger and cravings']},
+  {week:3,bg:'#F3E5F5',bar:'#AB47BC',goal:'Your goal this week: log your weight every Monday morning, same time, before eating.',improvements:['Weigh in immediately after using the bathroom, before breakfast','Note how you feel that morning alongside the number','Focus on the trend line over 4 weeks, not individual readings'],results:['Clear baseline established for measuring progress','Reduced anxiety around the scale when context is tracked','Identifies PCOS water retention patterns mid-cycle']},
+  {week:4,bg:'#FFF3E0',bar:'#FF8F00',goal:'Your goal this week: have your afternoon snack every day at 3:30–4:00 pm without skipping.',improvements:['Set a daily 3:30 pm alarm — this is your cortisol window','Prep rice cakes and portion turkey/eggs on Sunday for the week','If in a meeting, eat quietly at your desk — this one is non-negotiable'],results:['Prevents the 4 pm cortisol-insulin crash','Eliminates stress-driven sugar cravings late afternoon','Protects thyroid function from extended fasting gaps']},
+  {week:5,bg:'#E1F5FE',bar:'#29B6F6',goal:'Your goal this week: replace one coffee with an herbal tea — ginger, chamomile or liquorice root.',improvements:['Try ginger tea at 10:30 am instead of a second coffee','Brew a pot on Sunday and keep it in the fridge as iced tea for work','Chamomile at 9 pm replaces the evening scroll and lowers cortisol'],results:['Reduced gastric acid production','Lower afternoon cortisol from caffeine','Better sleep onset — chamomile activates GABA receptors']},
+  {week:6,bg:'#FCE4EC',bar:'#E91E8C',goal:'Your goal this week: add 5 minutes of breathwork or stretching immediately after your workday ends.',improvements:['Try box breathing (4-4-4-4) for 5 minutes before dinner','Even just lying on the floor with legs up the wall works','This signals to your nervous system: work is over, rest begins'],results:['Measurable cortisol reduction within 5 minutes','Better digestion at dinner (parasympathetic activation)','Improved sleep quality — HRV increases overnight']},
+  {week:7,bg:'#E8EAF6',bar:'#5C6BC0',goal:'Your goal this week: eat dinner away from screens, without multitasking, at least 4 out of 7 nights.',improvements:['Put your phone face-down on the other side of the room during dinner','If eating alone, put on music rather than a show','Chew slowly — 20 chews per bite reduces bloating significantly'],results:['Better digestion — gut needs parasympathetic state to function','Reduced bloating and reflux after dinner','Mindful eating reduces total calorie intake without restriction']},
+  {week:8,bg:'#E0F2F1',bar:'#00796B',goal:'Your goal this week: get to bed 30 minutes earlier than usual, every night.',improvements:['Set a "prep for bed" alarm 45 minutes before target sleep time','No screens from 30 minutes before bed — use blue light filter if needed','Magnesium glycinate 30 minutes before bed if not already doing this'],results:['Each additional 30 min sleep improves cortisol regulation the next day','Thyroid hormone conversion (T4→T3) peaks during deep sleep','Insulin sensitivity improves measurably after just 3–4 nights of better sleep']},
+];
+function renderFeedback(){
+  const keys=Object.keys(state).sort().filter(k=>k.match(/^\d{4}-\d{2}-\d{2}$/));
+  const currentWeek=keys.length?Math.min(Math.floor((new Date()-new Date(keys[0]))/(7*24*60*60*1000))+1,WEEKLY_FEEDBACK.length):1;
+  const fb=document.getElementById('feedback-cards');
+  fb.innerHTML=WEEKLY_FEEDBACK.map((w,i)=>{
+    const isCurrent=w.week===currentWeek,isPast=w.week<currentWeek;
+    const opacity=isCurrent?1:isPast?0.75:0.45;
+    const badge=isCurrent?`<span style="font-size:10px;font-weight:700;background:${w.bar};color:#fff;padding:2px 8px;border-radius:10px">THIS WEEK</span>`:isPast?`<span style="font-size:10px;font-weight:600;color:${w.bar}">✓ Completed</span>`:`<span style="font-size:10px;color:var(--text-3)">Upcoming</span>`;
+    return `<div class="feedback-card" style="background:${w.bg};opacity:${opacity};border-left:4px solid ${w.bar}">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div class="fb-week-label">Week ${w.week}</div>${badge}
       </div>
-      ${syms.length?`<div style="display:flex;gap:4px;flex-wrap:wrap">${syms.map(s=>`<span style="font-size:9px;background:var(--coral-lt);color:var(--coral);padding:2px 7px;border-radius:8px;font-weight:500">${s}</span>`).join('')}</div>`:''}
+      <div class="fb-goal">🎯 ${w.goal}</div>
+      <div style="font-size:11px;font-weight:600;color:var(--text-2);margin-bottom:4px;margin-top:10px">3 SMALL CHANGES</div>
+      <div class="fb-improvements">${w.improvements.map(imp=>`<div class="fb-item"><div class="fb-dot" style="background:${w.bar}"></div><div class="fb-text">${imp}</div></div>`).join('')}</div>
+      <div style="font-size:11px;font-weight:600;color:var(--text-2);margin-bottom:6px">EXPECTED RESULTS</div>
+      <div class="fb-result-row">${w.results.map(r=>`<span class="fb-result" style="background:rgba(255,255,255,0.6);color:var(--text-2)">${r}</span>`).join('')}</div>
     </div>`;
   }).join('');
 }
@@ -769,144 +791,103 @@ function renderGutTrend(){
 function saveDay(){
   const key=todayKey();
   const meals=MEALS.map(s=>document.getElementById(s.id)?.classList.contains('done')||false);
-  const supps=['s0','s1','s2','s3'].map(id=>document.getElementById(id).classList.contains('done'));
+  const supps=['s0','s1','s2','s3','s4'].map(id=>document.getElementById(id).classList.contains('done'));
   const ranges=document.querySelectorAll('#v-today input[type=range]');
   state[key]=Object.assign(state[key]||{},{
-    date:key,
-    workout:document.getElementById('workout-type').value,
+    date:key,workout:document.getElementById('workout-type').value,
     workoutDone:document.getElementById('workout-chk').classList.contains('done'),
-    duration:parseInt(ranges[0]?.value||45),
-    intensity:parseInt(ranges[1]?.value||5),
-    meals, mealsCount:meals.slice(0,5).filter(Boolean).length,
+    duration:parseInt(ranges[0]?.value||45),intensity:parseInt(ranges[1]?.value||5),
+    meals,mealsCount:meals.slice(0,5).filter(Boolean).length,
     mealSelections:Object.assign({},mealSelections),
-    water:getWater(),
-    energy:parseInt(document.getElementById('energy-sl').value),
+    water:getWater(),energy:parseInt(document.getElementById('energy-sl').value),
     stress:parseInt(document.getElementById('stress-sl').value),
     sleep:parseFloat(document.getElementById('sleep-sl').value),
-    mood:currentMood,
-    coffee:currentCoffee,
-    supps, suppsCount:supps.filter(Boolean).length,
+    mood:currentMood,coffee:currentCoffee,supps,suppsCount:supps.filter(Boolean).length,
   });
   saveState();flash('save-msg');updatePhaseHeader();
 }
 function saveJournal(){
   const key=todayKey();
-  state[key]=Object.assign(state[key]||{},{
-    date:key,
-    journal:{
-      feel:document.getElementById('j-feel').value,
-      grateful:document.getElementById('j-grateful').value,
-      intention:document.getElementById('j-intention').value,
-      worry:document.getElementById('j-worry').value,
-      wins:document.getElementById('j-wins').value,
-      hard:document.getElementById('j-hard').value,
-      body:document.getElementById('j-body').value,
-      tomorrow:document.getElementById('j-tomorrow').value,
-      rating:currentDayRating,
-    }
-  });
+  state[key]=Object.assign(state[key]||{},{date:key,journal:{
+    feel:document.getElementById('j-feel').value,grateful:document.getElementById('j-grateful').value,
+    intention:document.getElementById('j-intention').value,worry:document.getElementById('j-worry').value,
+    wins:document.getElementById('j-wins').value,hard:document.getElementById('j-hard').value,
+    body:document.getElementById('j-body').value,tomorrow:document.getElementById('j-tomorrow').value,
+    rating:currentDayRating,
+  }});
   saveState();flash('journal-save-msg');
 }
 function saveGut(){
   const key=todayKey();
-  state[key]=Object.assign(state[key]||{},{
-    date:key,
-    gutSymptoms:[...gutSymptoms],
-    gutPain:currentPain,
-    gutNote:document.getElementById('gut-note').value,
-    coffeeTiming:document.getElementById('coffee-timing').value,
-    coffee:currentCoffee,
-  });
+  state[key]=Object.assign(state[key]||{},{date:key,gutSymptoms:[...gutSymptoms],gutPain:currentPain,gutNote:document.getElementById('gut-note').value,coffeeTiming:document.getElementById('coffee-timing').value,coffee:currentCoffee});
   saveState();flash('gut-save-msg');renderGutTrend();
 }
 function saveBlood(){
   const key=todayKey();
-  state[key]=Object.assign(state[key]||{},{
-    date:key,
-    bsRatings:Object.assign({},bsRatings),
-    bsFeelings:Object.assign({},bsFeelings),
-  });
+  state[key]=Object.assign(state[key]||{},{date:key,bsRatings:Object.assign({},bsRatings),bsFeelings:Object.assign({},bsFeelings)});
   saveState();flash('blood-save-msg');renderBSHistory();
 }
 function flash(id){const el=document.getElementById(id);if(el){el.textContent='Saved!';setTimeout(()=>el.textContent='',2000)}}
 
 function loadDay(){
-  const d=state[todayKey()]; if(!d) return;
+  const d=state[todayKey()];if(!d)return;
   const ranges=document.querySelectorAll('#v-today input[type=range]');
-  if(d.workout) document.getElementById('workout-type').value=d.workout;
-  if(d.workoutDone) document.getElementById('workout-chk').classList.add('done');
+  if(d.workout)document.getElementById('workout-type').value=d.workout;
+  if(d.workoutDone)document.getElementById('workout-chk').classList.add('done');
   if(d.duration&&ranges[0]){ranges[0].value=d.duration;document.getElementById('dur-val').textContent=d.duration+' min'}
   if(d.intensity&&ranges[1]){ranges[1].value=d.intensity;document.getElementById('int-val').textContent=d.intensity+' / 10'}
   if(d.energy){document.getElementById('energy-sl').value=d.energy;document.getElementById('energy-val').textContent=d.energy+' / 10'}
   if(d.stress){document.getElementById('stress-sl').value=d.stress;document.getElementById('stress-val').textContent=d.stress+' / 10'}
   if(d.sleep){document.getElementById('sleep-sl').value=d.sleep;document.getElementById('sleep-val').textContent=parseFloat(d.sleep).toFixed(1)+' h'}
   if(d.mood){currentMood=d.mood;document.querySelectorAll('.mood-btn').forEach(b=>{if(b.textContent===d.mood)b.classList.add('sel')})}
-  if(d.supps) d.supps.forEach((v,i)=>{if(v)document.getElementById('s'+i).classList.add('done')});
-  if(d.coffee){currentCoffee=d.coffee;initCoffee('coffee-cups',d.coffee);initCoffee('coffee-cups-gut',d.coffee);}
-  if(d.journal){
-    const j=d.journal;
-    ['feel','grateful','intention','worry','wins','hard','body','tomorrow'].forEach(k=>{const el=document.getElementById('j-'+k);if(el)el.value=j[k]||''});
-    if(j.rating){currentDayRating=j.rating;document.querySelectorAll('#day-rating-btns .pain-btn').forEach((b,i)=>{if(i+1===j.rating)b.classList.add('sel')})}
-  }
+  if(d.supps)d.supps.forEach((v,i)=>{if(v)document.getElementById('s'+i).classList.add('done')});
+  if(d.coffee){currentCoffee=d.coffee;initCoffee('coffee-cups',d.coffee);initCoffee('coffee-cups-gut',d.coffee)}
+  if(d.journal){const j=d.journal;['feel','grateful','intention','worry','wins','hard','body','tomorrow'].forEach(k=>{const el=document.getElementById('j-'+k);if(el)el.value=j[k]||''});if(j.rating){currentDayRating=j.rating;document.querySelectorAll('#day-rating-btns .pain-btn').forEach((b,i)=>{if(i+1===j.rating)b.classList.add('sel')})}}
   if(d.gutPain>=0){currentPain=d.gutPain;document.querySelectorAll('#pain-scale-btns .pain-btn').forEach((b,i)=>{if(i===d.gutPain)b.classList.add('sel')})}
-  if(d.gutNote) document.getElementById('gut-note').value=d.gutNote;
-  if(d.coffeeTiming) document.getElementById('coffee-timing').value=d.coffeeTiming;
+  if(d.gutNote)document.getElementById('gut-note').value=d.gutNote;
+  if(d.coffeeTiming)document.getElementById('coffee-timing').value=d.coffeeTiming;
 }
 
 /* ── Week / Phase ── */
-const wColors={'Reformer Pilates':['#E1F5EE','#085041'],'Strength — Lower body':['#EEEDFE','#3C3489'],'Strength — Upper body':['#EEEDFE','#3C3489'],'Strength — Full body':['#EEEDFE','#3C3489'],'Tennis — Casual hitting':['#FAEEDA','#633806'],'Tennis — Match play':['#FAEEDA','#633806'],'HIIT':['#FAECE7','#712B13'],'Walk / Zone 2':['#EAF3DE','#27500A'],'Yoga / Mobility':['#EAF3DE','#27500A'],'Rest day':['#F1EFE8','#5F5E5A']};
-
+const wColors={'Reformer Pilates':['#E0F2F1','#00796B'],'Strength — Lower body':['#F3E5F5','#6A1B9A'],'Strength — Upper body':['#F3E5F5','#6A1B9A'],'Strength — Full body':['#F3E5F5','#6A1B9A'],'Tennis — Casual hitting':['#FFF3E0','#E65100'],'Tennis — Match play':['#FFF3E0','#E65100'],'HIIT':['#FBE9E7','#BF360C'],'Walk / Zone 2':['#E8F5E9','#2E7D32'],'Yoga / Mobility':['#E8F5E9','#2E7D32'],'Rest day':['#ECEFF1','#546E7A']};
 function getWeekDates(off){const today=new Date();const dow=today.getDay();const mon=new Date(today);mon.setDate(today.getDate()-dow+1+off*7);return Array.from({length:7},(_,i)=>{const d=new Date(mon);d.setDate(mon.getDate()+i);return d})}
-
 function renderWeek(){
   const dates=getWeekDates(weekOffset),today=todayKey();
   const s=dates[0],e=dates[6];
   document.getElementById('week-label').textContent=s.getDate()+' '+MONTHS[s.getMonth()]+' – '+e.getDate()+' '+MONTHS[e.getMonth()];
   const grid=document.getElementById('week-grid');grid.innerHTML='';
-  dates.forEach(d=>{
-    const k=dateKey(d),en=state[k],cell=document.createElement('div');
-    cell.className='day-cell'+(k===today?' today':'');
-    const wt=en?.workout||'',cols=wColors[wt]||['#F1EFE8','#5F5E5A'];
-    cell.innerHTML=`<div class="dc-name">${DAYS[d.getDay()]}</div><div class="dc-num">${d.getDate()}</div><div class="dc-dot${en?.workoutDone?' done':''}"></div>${wt?`<div class="dc-badge" style="background:${cols[0]};color:${cols[1]}">${wt.split(' — ')[0].substring(0,8)}</div>`:''}${en?`<div style="font-size:8px;color:var(--text-3);margin-top:2px">${en.mealsCount||0}/5</div>`:''}`;
-    grid.appendChild(cell);
-  });
+  dates.forEach(d=>{const k=dateKey(d),en=state[k],cell=document.createElement('div');cell.className='day-cell'+(k===today?' today':'');const wt=en?.workout||'',cols=wColors[wt]||['#ECEFF1','#546E7A'];cell.innerHTML=`<div class="dc-name">${DAYS[d.getDay()]}</div><div class="dc-num">${d.getDate()}</div><div class="dc-dot${en?.workoutDone?' done':''}"></div>${wt?`<div class="dc-badge" style="background:${cols[0]};color:${cols[1]}">${wt.split(' — ')[0].substring(0,8)}</div>`:''}${en?`<div style="font-size:8px;color:var(--text-3);margin-top:2px">${en.mealsCount||0}/5</div>`:''}`;grid.appendChild(cell);});
   renderPhaseCard();renderPlanCard();
 }
-
 function getPhaseInfo(){
-  const keys=Object.keys(state).sort();
-  if(!keys.length) return{phase:1,week:1,title:'Phase 1 · Weeks 1–4',label:'Restore & Rebuild',color:'#1D9E75',bg:'#E1F5EE'};
+  const keys=Object.keys(state).filter(k=>k.match(/^\d{4}-\d{2}-\d{2}$/)).sort();
+  if(!keys.length)return{phase:1,week:1,title:'Phase 1 · Weeks 1–4',color:'#1D9E75',bg:'#E0F2F1'};
   const weeks=Math.floor((new Date()-new Date(keys[0]))/(7*24*60*60*1000));
-  if(weeks<4) return{phase:1,week:weeks+1,title:'Phase 1 · Weeks 1–4',label:'Restore & Rebuild',color:'#1D9E75',bg:'#E1F5EE'};
-  if(weeks<8) return{phase:2,week:weeks+1,title:'Phase 2 · Weeks 5–8',label:'Build & Balance',color:'#7F77DD',bg:'#EEEDFE'};
-  return{phase:3,week:weeks+1,title:'Phase 3 · Weeks 9–12',label:'Strengthen & Sustain',color:'#D85A30',bg:'#FAECE7'};
+  if(weeks<4)return{phase:1,week:weeks+1,title:'Phase 1 · Weeks 1–4',color:'#1D9E75',bg:'#E0F2F1'};
+  if(weeks<8)return{phase:2,week:weeks+1,title:'Phase 2 · Weeks 5–8',color:'#AB47BC',bg:'#F3E5F5'};
+  return{phase:3,week:weeks+1,title:'Phase 3 · Weeks 9–12',color:'#FF8F00',bg:'#FFF3E0'};
 }
 function updatePhaseHeader(){const p=getPhaseInfo();document.getElementById('hdr-phase').textContent=p.title+' · Week '+p.week}
-function renderPhaseCard(){
-  const p=getPhaseInfo();
-  const g={1:'Focus on Reformer Pilates and light strength. Max 3 sessions/week at ≤70% MHR. No tennis or HIIT yet.',2:'4 sessions/week. Add tennis at easy rally pace. Build strength 3–4 sets progressively.',3:'5 sessions/week. Full modality rotation. HIIT max 1×/week, capped at 25–30 min.'};
-  document.getElementById('phase-card').innerHTML=`<div class="phase-banner" style="background:${p.bg}"><div style="font-size:12px;font-weight:500;color:${p.color};margin-bottom:5px">${p.title} — Week ${p.week}</div><div style="font-size:13px;color:var(--text-2);line-height:1.6">${g[p.phase]}</div></div>`;
-}
-const plans={1:[['Mon','Reformer Pilates','Foundations — 45 min'],['Tue','Rest','Easy walk if energy allows'],['Wed','Strength','Full body light — 3×10'],['Thu','Rest','Stretch & foam rolling'],['Fri','Reformer Pilates','Mobility focus — 45 min'],['Sat','Walk','30–40 min brisk walk'],['Sun','Full rest','Recovery']],2:[['Mon','Strength','Lower body — 3–4×10–12'],['Tue','Reformer Pilates','Intermediate — 50 min'],['Wed','Rest','Yin yoga or Zone 2'],['Thu','Strength','Upper body — 3–4×10'],['Fri','Tennis','Casual hitting — 60 min'],['Sat','Reformer Pilates','Full body — 50 min'],['Sun','Full rest','Meal prep']],3:[['Mon','Strength','Lower body — 4×8'],['Tue','Reformer Pilates','Advanced — 55 min'],['Wed','HIIT','25–30 min, 6–8 rounds'],['Thu','Rest','Deep stretch'],['Fri','Strength','Upper body — 4×8'],['Sat','Tennis','Match play — 90 min'],['Sun','Full rest','Non-negotiable']]};
-const planCols={'Reformer Pilates':['#E1F5EE','#085041'],'Strength':['#EEEDFE','#3C3489'],'Tennis':['#FAEEDA','#633806'],'HIIT':['#FAECE7','#712B13'],'Rest':['#F1EFE8','#5F5E5A'],'Full rest':['#F1EFE8','#5F5E5A'],'Walk':['#EAF3DE','#27500A']};
-function renderPlanCard(){
-  const p=getPhaseInfo();
-  document.getElementById('plan-card').innerHTML=plans[p.phase].map(([day,type,desc])=>{const c=planCols[type]||['#F1EFE8','#5F5E5A'];return `<div class="log-row"><div style="min-width:34px;font-size:11px;color:var(--text-3);font-weight:500">${day}</div><div style="flex:1;padding:0 10px"><div style="font-size:12px;color:var(--text);font-weight:500">${type}</div><div style="font-size:11px;color:var(--text-3)">${desc}</div></div><span class="pill" style="background:${c[0]};color:${c[1]};font-size:9px">${type}</span></div>`}).join('');
-}
+function renderPhaseCard(){const p=getPhaseInfo();const g={1:'Focus on Reformer Pilates and light strength. Max 3 sessions/week. No tennis or HIIT yet.',2:'4 sessions/week. Tennis at easy rally pace. Build strength 3–4 sets progressively.',3:'5 sessions/week. Full rotation. HIIT max 1×/week, 25–30 min only.'};document.getElementById('phase-card').innerHTML=`<div class="phase-banner" style="background:${p.bg}"><div style="font-size:12px;font-weight:600;color:${p.color};margin-bottom:5px">${p.title} — Week ${p.week}</div><div style="font-size:13px;color:var(--text-2);line-height:1.6">${g[p.phase]}</div></div>`;}
+const plans={1:[['Mon','Reformer Pilates','Foundations — 45 min'],['Tue','Rest','Easy walk if energy allows'],['Wed','Strength','Full body light — 3×10'],['Thu','Rest','Stretch & foam rolling'],['Fri','Reformer Pilates','Mobility — 45 min'],['Sat','Walk','30–40 min brisk walk'],['Sun','Full rest','Recovery']],2:[['Mon','Strength','Lower body — 3–4×10–12'],['Tue','Reformer Pilates','Intermediate — 50 min'],['Wed','Rest','Yin yoga or Zone 2'],['Thu','Strength','Upper body — 3–4×10'],['Fri','Tennis','Casual hitting — 60 min'],['Sat','Reformer Pilates','Full body — 50 min'],['Sun','Full rest','Meal prep']],3:[['Mon','Strength','Lower body — 4×8'],['Tue','Reformer Pilates','Advanced — 55 min'],['Wed','HIIT','25–30 min, 6–8 rounds'],['Thu','Rest','Deep stretch'],['Fri','Strength','Upper body — 4×8'],['Sat','Tennis','Match play — 90 min'],['Sun','Full rest','Non-negotiable']]};
+const planCols={'Reformer Pilates':['#E0F2F1','#00796B'],'Strength':['#F3E5F5','#6A1B9A'],'Tennis':['#FFF3E0','#E65100'],'HIIT':['#FBE9E7','#BF360C'],'Rest':['#ECEFF1','#546E7A'],'Full rest':['#ECEFF1','#546E7A'],'Walk':['#E8F5E9','#2E7D32']};
+function renderPlanCard(){const p=getPhaseInfo();document.getElementById('plan-card').innerHTML=plans[p.phase].map(([day,type,desc])=>{const c=planCols[type]||['#ECEFF1','#546E7A'];return `<div class="log-row"><div style="min-width:34px;font-size:11px;color:var(--text-3);font-weight:600">${day}</div><div style="flex:1;padding:0 10px"><div style="font-size:12px;color:var(--text);font-weight:500">${type}</div><div style="font-size:11px;color:var(--text-3)">${desc}</div></div><span class="pill" style="background:${c[0]};color:${c[1]};font-size:9px">${type}</span></div>`}).join('')}
 function changeWeek(dir){weekOffset+=dir;renderWeek()}
 function updateWorkoutLabel(){const v=document.getElementById('workout-type').value;if(v==='Rest day')document.getElementById('workout-chk').classList.add('done')}
 
 /* ── Progress ── */
 function renderProgress(){
-  const keys=Object.keys(state).sort(),last7=keys.slice(-7);
+  const keys=Object.keys(state).filter(k=>k.match(/^\d{4}-\d{2}-\d{2}$/)).sort(),last7=keys.slice(-7);
   const avg=(arr,fn)=>arr.length?Math.round(arr.reduce((a,k)=>a+(fn(state[k])||0),0)/arr.length*10)/10:0;
   const aE=avg(last7,d=>d.energy),aS=avg(last7,d=>d.stress),aSl=avg(last7,d=>d.sleep);
-  const totalW=Object.values(state).filter(d=>d.workoutDone).length;
+  const totalW=Object.values(state).filter(d=>d&&d.workoutDone).length;
+  const wtLog=state.weightLog||[];const wtDelta=wtLog.length>=2?Math.round((wtLog[wtLog.length-1].kg-wtLog[0].kg)*10)/10:null;
   document.getElementById('prog-stats').innerHTML=`
     <div class="stat stat-purple"><div class="stat-label">Workouts</div><div class="stat-val">${totalW}</div><div class="stat-sub">all time</div></div>
     <div class="stat stat-rose"><div class="stat-label">Avg energy</div><div class="stat-val">${aE||'–'}</div><div class="stat-sub">last 7 days</div></div>
     <div class="stat stat-blue"><div class="stat-label">Avg sleep</div><div class="stat-val">${aSl||'–'}h</div><div class="stat-sub">last 7 days</div></div>
-    <div class="stat stat-teal"><div class="stat-label">Avg stress</div><div class="stat-val">${aS||'–'}</div><div class="stat-sub">lower = better</div></div>`;
+    <div class="stat stat-teal"><div class="stat-label">Avg stress</div><div class="stat-val">${aS||'–'}</div><div class="stat-sub">lower = better</div></div>
+    ${wtDelta!==null?`<div class="stat stat-green"><div class="stat-label">Weight change</div><div class="stat-val" style="color:${wtDelta<=0?'#2E7D32':'#C2185B'}">${wtDelta>0?'+':''}${wtDelta} kg</div><div class="stat-sub">since start</div></div>`:''}`;
   const dates=getWeekDates(0),bars=document.getElementById('week-bars');bars.innerHTML='';
   dates.forEach(d=>{const k=dateKey(d),en=state[k];const h=en?(en.energy||5)/10:0;const col=en?.workoutDone?'#8E24AA':'#CFD8DC';const b=document.createElement('div');b.className='bar-wrap';b.innerHTML=`<div class="bar-bg"><div class="bar-fill" style="height:${Math.round(h*100)}%;background:${col}"></div></div><div class="bar-lbl">${DAYS[d.getDay()]}</div>`;bars.appendChild(b)});
   const tr=document.getElementById('trend-rows');
@@ -916,25 +897,9 @@ function renderProgress(){
 
 /* ── History ── */
 function renderHistory(){
-  const keys=Object.keys(state).sort().reverse(),list=document.getElementById('history-list');
+  const keys=Object.keys(state).filter(k=>k.match(/^\d{4}-\d{2}-\d{2}$/)).sort().reverse(),list=document.getElementById('history-list');
   if(!keys.length){list.innerHTML='<div style="font-size:13px;color:var(--text-3);padding:8px 0">No entries yet.</div>';return}
-  list.innerHTML=keys.map(k=>{const e=state[k];const wt=e.workout||'';const cols=wColors[wt]||['#F1EFE8','#5F5E5A'];
-    const spikeCols=['','#5DCAA5','#A8D97F','#F5C842','#F08C3A','#E05252'];
-    const bsAvg=e.bsRatings&&Object.values(e.bsRatings).length?Math.round(Object.values(e.bsRatings).reduce((a,b)=>a+b,0)/Object.values(e.bsRatings).length*10)/10:null;
-    return `<div class="hist-row">
-      <div class="hist-date">${fmtKey(k)} ${k.split('-')[0]}</div>
-      <div class="hist-main"><div class="hist-workout">${wt||'No session'}</div>
-        <div class="hist-stats">
-          ${e.mood?`<span class="hist-stat">${e.mood}</span>`:''}
-          <span class="hist-stat">${e.mealsCount||0}/5</span>
-          <span class="hist-stat">☕${e.coffee||0}</span>
-          ${e.gutPain>=0?`<span class="hist-stat">Gut ${e.gutPain}/10</span>`:''}
-          ${bsAvg!==null?`<span class="hist-stat" style="color:${spikeCols[Math.round(bsAvg)]||'var(--text-2)'}">BS ${bsAvg}</span>`:''}
-        </div>
-      </div>
-      ${wt?`<div style="margin-top:4px"><span class="pill" style="background:${cols[0]};color:${cols[1]}">${wt}</span></div>`:''}
-      ${e.journal?.wins?`<div style="font-size:11px;color:var(--text-3);margin-top:4px;font-style:italic">"${e.journal.wins.substring(0,70)}${e.journal.wins.length>70?'…':''}"</div>`:''}
-    </div>`}).join('');
+  list.innerHTML=keys.map(k=>{const e=state[k];const wt=e.workout||'';const cols=wColors[wt]||['#ECEFF1','#546E7A'];const sc=['','#26A69A','#66BB6A','#FDD835','#FF8F00','#E53935'];const bsAvg=e.bsRatings&&Object.values(e.bsRatings).length?Math.round(Object.values(e.bsRatings).reduce((a,b)=>a+b,0)/Object.values(e.bsRatings).length*10)/10:null;return `<div class="hist-row"><div class="hist-date">${fmtKey(k)} ${k.split('-')[0]}</div><div class="hist-main"><div class="hist-workout">${wt||'No session'}</div><div class="hist-stats">${e.mood?`<span class="hist-stat">${e.mood}</span>`:''}<span class="hist-stat">${e.mealsCount||0}/5</span><span class="hist-stat">☕${e.coffee||0}</span>${e.gutPain>=0?`<span class="hist-stat">Gut ${e.gutPain}/10</span>`:''}${bsAvg!==null?`<span class="hist-stat" style="color:${sc[Math.round(bsAvg)]||'var(--text-2)'}">BS ${bsAvg}</span>`:''}</div></div>${wt?`<div style="margin-top:4px"><span class="pill" style="background:${cols[0]};color:${cols[1]}">${wt}</span></div>`:''}${e.journal?.wins?`<div style="font-size:11px;color:var(--text-3);margin-top:4px;font-style:italic">"${e.journal.wins.substring(0,70)}${e.journal.wins.length>70?'…':''}"</div>`:''}</div>`;}).join('');
 }
 function clearAll(){if(confirm('Delete all data? Cannot be undone.')){state={};saveState();renderHistory()}}
 
@@ -942,15 +907,9 @@ function clearAll(){if(confirm('Delete all data? Cannot be undone.')){state={};s
 loadState();
 const now=new Date();
 document.getElementById('hdr-date').innerHTML=DAYS[now.getDay()]+'<br>'+now.getDate()+' '+MONTHS[now.getMonth()];
-const savedCoffee=state[todayKey()]?.coffee||0;
-currentCoffee=savedCoffee;
-initCoffee('coffee-cups',savedCoffee);
-initCoffee('coffee-cups-gut',savedCoffee);
-renderMeals();
-initWater();
-renderSymptomGrid();
-loadDay();
-updatePhaseHeader();
+const savedCoffee=state[todayKey()]?.coffee||0;currentCoffee=savedCoffee;
+initCoffee('coffee-cups',savedCoffee);initCoffee('coffee-cups-gut',savedCoffee);
+renderMeals();initWater();renderSymptomGrid();loadDay();updatePhaseHeader();
 </script>
 </body>
 </html>
