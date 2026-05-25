@@ -477,7 +477,15 @@ textarea::placeholder{color:var(--text-3)}
 <!-- HISTORY -->
 <div id="v-history" class="view">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-    <div style="font-size:13px;color:var(--text-2)">All logged days</div>
+
+<div style="font-size:13px;color:var(--text-2)">All logged days</div>
+
+<div style="display:flex;gap:8px">
+<button onclick="exportWeekCSV()" style="font-size:12px;padding:6px 12px;border-radius:20px;border:0.5px solid var(--teal-mid);background:var(--teal-lt);cursor:pointer;color:var(--teal);font-family:var(--font);font-weight:500">Export week ↓</button>
+<button onclick="clearAll()" style="font-size:12px;padding:6px 12px;border-radius:20px;border:0.5px solid var(--border-md);background:transparent;cursor:pointer;color:var(--text-2);font-family:var(--font)">Clear all</button>
+</div>
+
+</div>
     <button onclick="clearAll()" style="font-size:12px;padding:6px 12px;border-radius:20px;border:0.5px solid var(--border-md);background:transparent;cursor:pointer;color:var(--text-2);font-family:var(--font)">Clear all</button>
   </div>
   <div class="card" id="history-list"></div>
@@ -826,6 +834,32 @@ function saveBlood(){
   const key=todayKey();
   state[key]=Object.assign(state[key]||{},{date:key,bsRatings:Object.assign({},bsRatings),bsFeelings:Object.assign({},bsFeelings)});
   saveState();flash('blood-save-msg');renderBSHistory();
+}
+  function exportWeekCSV(){
+  const today=new Date();
+  const dow=today.getDay();
+  const mon=new Date(today);
+  mon.setDate(today.getDate()-(dow===0?6:dow-1));
+  const weekKeys=[];
+  for(let i=0;i<7;i++){const d=new Date(mon);d.setDate(mon.getDate()+i);weekKeys.push(dateKey(d))}
+  const MOOD_LABEL={great:'Great',good:'Good',ok:'Ok',low:'Low',rough:'Rough'};
+  const headers=['Date','Energy (1-10)','Sleep (h)','Mood','Coffee','Stress (1-10)','Workout','Done','Duration (min)','Intensity (1-10)','Water (glasses)','Meals logged','Supplements taken','Gut Pain (0-10)','Gut Symptoms','Coffee timing','Blood Sugar avg','Day rating (1-10)'];
+  const rows=weekKeys.map(key=>{
+    const d=state[key];
+    if(!d)return [key,'','','','','','','','','','','','','','','','',''];
+    const bsVals=Object.values(d.bsRatings||{}).filter(v=>v>0);
+    const bsAvg=bsVals.length?(bsVals.reduce((a,b)=>a+b,0)/bsVals.length).toFixed(1):'';
+    return [key,d.energy??'',d.sleep??'',d.mood?(MOOD_LABEL[d.mood]||d.mood):'',d.coffee??'',d.stress??'',d.workout??'',d.workoutDone?'Yes':(d.workout?'No':''),d.duration??'',d.intensity??'',d.water??'',d.mealsCount??'',d.suppsCount??'',(d.gutPain>=0?d.gutPain:''),(d.gutSymptoms||[]).join('; '),d.coffeeTiming??'',bsAvg,d.journal?.rating??''];
+  });
+  const esc=v=>`"${String(v).replace(/"/g,'""')}"`;
+  const csv=[headers,...rows].map(r=>r.map(esc).join(',')).join('\n');
+  const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;a.download='wellness-week-'+weekKeys[0]+'.csv';
+  document.body.appendChild(a);a.click();
+  document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 function flash(id){const el=document.getElementById(id);if(el){el.textContent='Saved!';setTimeout(()=>el.textContent='',2000)}}
 
